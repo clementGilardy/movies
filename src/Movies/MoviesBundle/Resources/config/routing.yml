@@ -1,0 +1,16 @@
+movies_moviesbundle_home:
+    path:   /
+    defaults: {_controller: MoviesMoviesBundle:Movies:index}
+
+movies_moviesbundle_movies:
+    path:   /movies
+    defaults: {_controller: MoviesMoviesBundle:Movies:movies}
+
+movies_moviesbundle_series:
+    path:    /series
+    defaults: {_controller: MoviesMoviesBundle:Movies:series}
+    
+movies_moviesbundle_addMovie:
+    path: /addMovie
+    defaults: {_controller: MoviesMoviesBundle:Movies:addMovie}
+

@@ -1,0 +1,3 @@
+movies_movies:
+    resource: "@MoviesMoviesBundle/Resources/config/routing.yml"
+    prefix:   /movies

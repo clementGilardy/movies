@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%}Movies{%endblock%}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('index.css')}}">
+    {% endblock %}
+</head>
+<body>
+    <header>
+    <div id="menu">
+        <ul>
+            <li class="item"><a href="{{path('movies_moviesbundle_home')}}">Accueil</a></li>
+            <li class="item"><a href="{{path('movies_moviesbundle_movies')}}">Cinémas</a></li>
+            <li class="item"><a href="{{path('movies_moviesbundle_series')}}">Séries</a></li>
+        </ul>
+    </div>
+    </header>
+    <div id="arianne">
+    {% block arianne %}
+    Movies
+    {% endblock %}
+    </div>
+
+    <section>
+       {%block section%}
+        {%endblock%}
+    </section>
+    <footer>
+    </footer>
+  {% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  {% endblock %}
+</body>
+</html>

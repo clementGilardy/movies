@@ -1,0 +1,21 @@
+{% extends "::layout.html.twig" %}
+
+{%block stylesheets %}
+    {{parent()}}
+<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
+{%endblock%}
+
+{%block title%}{{parent()}} - Index{%endblock%}
+
+
+{%block arianne%}
+{{parent()}} <img height="15px" src="{{asset('images/arrow.png')}}"/> Accueil
+{%endblock%}
+
+{%block section%}
+	<h2>Les films de la semaine</h2>
+	{% for i in 1..test|length %}
+		{{ test.find(i).titre }}
+	{% endfor %}
+	
+{%endblock%}

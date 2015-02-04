@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+
+{%block stylesheets %}
+    {{parent()}}
+<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}"> 
+
+{%endblock%}
+
+{%block title%}{{parent()}} - Ajouter un film{%endblock%}
+
+{% block arianne %}
+	{{ parent() }}
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> Ajouté un film
+{% endblock %}
+
+{%block section%}
+	<h2>Ajouter un film</h2>
+
+{%endblock%}
