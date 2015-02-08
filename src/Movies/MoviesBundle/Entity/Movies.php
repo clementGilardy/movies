@@ -64,6 +64,13 @@ class Movies
      * @ORM\Column(name="jaquette", type="text")
      */
     private $image;
+    
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="votes", type="array")
+     */
+    private $votes;
 
 
     /**
@@ -212,5 +219,28 @@ class Movies
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set votes
+     *
+     * @param array $votes
+     * @return Movies
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return array 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }
