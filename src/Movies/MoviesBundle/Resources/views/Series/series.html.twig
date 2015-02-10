@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+
+{%block stylesheets %}
+    {{parent()}}
+{%endblock%}
+
+{%block title%}{{parent()}} - Acteurs{%endblock%}
+
+{% block arianne %}
+	{{ parent() }}
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> Séries
+{% endblock %}
+
+
+{%block section%}
+
+{%endblock%}

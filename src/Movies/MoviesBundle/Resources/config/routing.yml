@@ -8,7 +8,7 @@ movies_moviesbundle_movies:
 
 movies_moviesbundle_series:
     path:    /series
-    defaults: {_controller: MoviesMoviesBundle:Movies:series}
+    defaults: {_controller: MoviesMoviesBundle:Series:index}
     
 movies_moviesbundle_addMovie:
     path: /addMovie
