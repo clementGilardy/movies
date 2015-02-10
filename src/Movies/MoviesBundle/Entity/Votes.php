@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Movies\MoviesBundle\Entity\VoteRepository")
  */
-class Vote
+class Votes
 {
     /**
      * @var integer
@@ -28,10 +28,9 @@ class Vote
      */
     private $note;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="auteur", type="bigint")
+    /** 
+     * @ORM\OneToOne(targetEntity="Movies\UsersBundle\Entity\Users", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $auteur;
 

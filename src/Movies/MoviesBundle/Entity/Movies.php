@@ -28,17 +28,15 @@ class Movies
      */
     private $titre;
 
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="acteur", type="array")
-     */
+   /**
+    * 
+    * @ORM\ManyToMany(targetEntity="Movies\MoviesBundle\Entity\Acteur")
+    */
     private $acteur;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="commentaires", type="array")
+     * 
+     * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Commentaire")
      */
     private $commentaires;
 
@@ -61,14 +59,13 @@ class Movies
      * 
      * @var string
      * 
-     * @ORM\Column(name="jaquette", type="text")
+     * @ORM\Column(name="jaquette", type="text",nullable=false)
      */
     private $image;
     
     /**
-     * @var array
      *
-     * @ORM\Column(name="votes", type="array")
+     * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Votes")
      */
     private $votes;
 

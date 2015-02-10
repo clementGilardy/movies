@@ -25,7 +25,7 @@ class Commentaire
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="titre", type="string", length=255,nullable=false)
      */
     private $titre;
 
@@ -36,10 +36,9 @@ class Commentaire
      */
     private $message;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="auteur", type="bigint")
+    /** 
+     * @ORM\OneToOne(targetEntity="Movies\UsersBundle\Entity\Users", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $auteur;
 
