@@ -1,8 +1,8 @@
 movies_users:
     resource: "@MoviesUsersBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /user
 
 movies_movies:
     resource: "@MoviesMoviesBundle/Resources/config/routing.yml"
-    prefix:   /movies
+    prefix:   /
