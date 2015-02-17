@@ -14,5 +14,8 @@
 
 {%block section%}
 	<h2>Index</h2>
+	{% for i in 1..test|length %}
+		<p>{{ test.find(i).getTitre() }}</p>
+	{% endfor %}
 	
 {%endblock%}
