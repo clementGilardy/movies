@@ -17,20 +17,7 @@ class MoviesController extends Controller
     }
 
     public function moviesAction(Request $request)
-    {
-    	/*$acteurs = array("Bob lenon","Will smith");
-    	$commentaires = array("trop bien", "c'est null");
-    	$movies = new Movies();
-    	$movies->setActeur($acteurs);
-    	$movies->setCommentaires($commentaires);
-    	$movies->setDateRelease(new \DateTime());
-    	$movies->setTitre("Salut les geek");
-    	$movies->setSynopsis("Il était une fois ...");
-    	$image->setImage("null");
-    	$em = $this->get('doctrine.orm.entity_manager');
-    	$em->persist($movies);
-    	$em->flush();*/
-    	
+    {	
         return $this->render('MoviesMoviesBundle:Movies:films.html.twig'); 
     }
 
