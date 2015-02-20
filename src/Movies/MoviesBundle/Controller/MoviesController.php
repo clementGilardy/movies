@@ -12,8 +12,8 @@ class MoviesController extends Controller
     public function indexAction()
     {	
     	$em = $this->getDoctrine()->getManager();
-    	$test = $em->getRepository('MoviesMoviesBundle:Movies');
-       return $this->render('MoviesMoviesBundle:Movies:index.html.twig',array('test'=>$test));
+    	$movies = $em->getRepository('MoviesMoviesBundle:Movies')->findAll();
+       return $this->render('MoviesMoviesBundle:Movies:index.html.twig',array('movies'=>$movies));
     }
 
     public function moviesAction(Request $request)
