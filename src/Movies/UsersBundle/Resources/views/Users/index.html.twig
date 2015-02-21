@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+
+{%block stylesheets %}
+    {{parent()}}
+<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
+{%endblock%}
+
+{%block title%}{{parent()}} - Users{%endblock%}
+
+
+{%block arianne%}
+{{parent()}} <img height="15px" src="{{asset('images/arrow.png')}}"/> Users
+{%endblock%}
+
+{%block section%}
+	<h2>Gestion de l'utilisateur</h2>
+	
+	
+{%endblock%}

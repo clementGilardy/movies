@@ -13,4 +13,3 @@ movies_moviesbundle_series:
 movies_moviesbundle_addMovie:
     path: /addMovie
     defaults: {_controller: MoviesMoviesBundle:Movies:addMovie}
-
