@@ -3,12 +3,14 @@
 namespace Movies\UsersBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Users
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Movies\UsersBundle\Entity\UsersRepository")
+ * @UniqueEntity("pseudo")
+ * @UniqueEntity("email")
  */
 class Users
 {
@@ -38,7 +40,7 @@ class Users
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=255)
+     * @ORM\Column(name="pseudo", type="string", length=255, unique=true)
      */
     private $pseudo;
 
@@ -48,6 +50,13 @@ class Users
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255,unique=true)
+     */
+    private $email;
 
     /**
      * @var string
@@ -66,11 +75,15 @@ class Users
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="last_connection", type="datetime")
+     * @ORM\Column(name="last_connection", type="datetime",nullable=true)
      */
     private $lastConnection;
 
 
+    public function __construct()
+    {
+    	$this->dateInscription = new \DateTime();
+    }
     /**
      * Get id
      *
@@ -240,5 +253,28 @@ class Users
     public function getLastConnection()
     {
         return $this->lastConnection;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Users
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

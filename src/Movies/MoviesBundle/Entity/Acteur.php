@@ -38,10 +38,9 @@ class Acteur
     /**
      * @var string
      *
-     * @ORM\Column(name="biographie", type="text", nullable=false)
+     * @ORM\Column(name="biographie", type="text", nullable=true)
      */
     private $biographie;
-
 
     /**
      * Get id

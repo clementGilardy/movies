@@ -3,6 +3,7 @@
 namespace Movies\MoviesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Series
@@ -60,6 +61,60 @@ class Series
     private $acteur;
 
 
+    public function __construct()
+    {
+    	$this->commentaire = new ArrayCollection();
+    	$this->vote        = new ArrayCollection();
+    	$this->acteur      = new ArrayCollection();
+    	$this->episodes    = new ArrayCollection();
+    }
+    
+    public function addCommentaire(Commentaire $commentaire)
+    {
+    	$this->commentaire[] = $commentaire;
+    	return $this;
+    }
+    
+    public function removeCommentaires(Commentaire $commentaire)
+    {
+    	$this->commentaire->removeElement($commentaire);
+    }
+    
+    public function addVote(Votes $vote)
+    {
+    	$this->vote[] = $vote;
+    	return $this;
+    }
+    
+    public function removeVote(Votes $vote)
+    {
+    	$this->vote->removeElement($vote);
+    } 
+    
+    public function addActeur(Acteur $acteur)
+    {
+    	$this->acteur[] = $acteur;
+    	return $this;
+    }
+    
+    public function removeActeur(Acteur $acteur)
+    {
+    	$this->acteur->removeElement($acteur);
+    }
+    
+    public function addEpisode(Episode $episode)
+    {
+    	$this->episodes[] = $episode;
+    	return $this;
+    }
+    
+    public function removeEpisode(Episode $episode)
+    {
+    	$this->episodes->removeElement($episode);
+    }
+    
+    
+    
     /**
      * Get id
      *

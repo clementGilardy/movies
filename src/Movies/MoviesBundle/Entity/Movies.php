@@ -3,6 +3,7 @@
 namespace Movies\MoviesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Movies
@@ -69,6 +70,12 @@ class Movies
      */
     private $votes;
 
+    public function __construct()
+    {
+    	$this->commentaires = new ArrayCollection();
+    	$this->votes 		= new ArrayCollection();
+    	$this->acteur   	= new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -78,6 +85,17 @@ class Movies
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function addActeur(Acteur $acteur)
+    {
+    	$this->acteur[] = $acteur;
+    	return $this;
+    }
+    
+    public function removeActeur(Acteur $acteur)
+    {
+    	$this->acteur->removeElement($acteur);
     }
 
     /**
@@ -218,26 +236,30 @@ class Movies
         return $this->image;
     }
 
-    /**
-     * Set votes
-     *
-     * @param array $votes
-     * @return Movies
-     */
-    public function setVotes($votes)
-    {
-        $this->votes = $votes;
-
-        return $this;
-    }
-
-    /**
-     * Get votes
-     *
-     * @return array 
-     */
-    public function getVotes()
-    {
-        return $this->votes;
-    }
+   public function addVote(Votes $vote)
+   {
+   		$this->votes[] = $vote;
+   		return $this;
+   }
+   
+   public function getVotes()
+   {
+   		return $this->votes;
+   }
+   
+   public function removeVote(Vote $vote)
+   {
+   		$this->votes->removeElement($vote);	
+   }
+   
+   public function addCommentaire(Commentaire $commentaire)
+   {
+   		$this->commentaires[] = $commentaire;
+   		return this;
+   }
+   
+   public function removeCommentaire(Commentaire $commentaire)
+   {
+   		$this->commentaires->removeElement($commentaire);
+   }
 }
