@@ -6,7 +6,7 @@ movies_back_office:
 movies_users:
     resource: "@MoviesUsersBundle/Controller/"
     type:     annotation
-    prefix:   /user
+    prefix:   /users
 
 movies_movies:
     resource: "@MoviesMoviesBundle/Resources/config/routing.yml"
