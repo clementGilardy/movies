@@ -28,12 +28,6 @@ class Votes
      */
     private $note;
 
-    /** 
-     * @ORM\OneToOne(targetEntity="Movies\UsersBundle\Entity\Users", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $auteur;
-
 
     /**
      * Get id
