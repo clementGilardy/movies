@@ -61,7 +61,7 @@ class Users
     /**
      * @var string
      *
-     * @ORM\Column(name="avatar", type="string", length=255)
+     * @ORM\Column(name="avatar", type="string", length=255,nullable=true)
      */
     private $avatar;
 
@@ -78,7 +78,11 @@ class Users
      * @ORM\Column(name="last_connection", type="datetime",nullable=true)
      */
     private $lastConnection;
-
+    
+    public function getPath()
+    {
+    	return "uploads/";
+    }
 
     public function __construct()
     {

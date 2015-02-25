@@ -11,7 +11,7 @@
 {% if user is empty %}
 <p>Cette utilisateur n'existe pas ! {{ id }}</p>
 {% else %}
-	<h2>{{ user.pseudo }}</h2>
+	<h2>{{ user.pseudo|capitalize }}</h2>
 {% endif %}
 	
 {%endblock%}

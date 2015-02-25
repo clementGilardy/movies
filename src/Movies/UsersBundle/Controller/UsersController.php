@@ -34,11 +34,11 @@ class UsersController extends Controller
 		$user = new Users();
 		
 		$form = $this->get('form.factory')->createBuilder('form',$user)
-		->add('nom','text')
-		->add('prenom','text')
-		->add('pseudo','text')
-		->add('password','password')
-		->add('email','email')
+		->add('nom','text',array('required'=>true))
+		->add('prenom','text',array('required'=>true))
+		->add('pseudo','text',array('required'=>true))
+		->add('password','password',array('required'=>true))
+		->add('email','email',array('required'=>true))
 		->add('avatar','file')
 		->add('S\'inscrire','submit')->getForm();
 		
@@ -46,6 +46,14 @@ class UsersController extends Controller
 		
 		if($form->isValid())
 		{
+			//we uploaded the avatard for the user 
+			if(!empty($user->getAvatar()))
+			{
+				$avatar = $user->getPath().$user->getPseudo().'_'.$user->getNom().'.jpg';
+				move_uploaded_file($user->getAvatar(),$avatar);
+				$user->setAvatar($avatar);
+			}
+			
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($user);
 			$em->flush();
