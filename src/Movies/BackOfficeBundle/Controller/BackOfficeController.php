@@ -14,6 +14,16 @@ class BackOfficeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('MoviesBackOfficeBundle:BackOffice:index.html.twig');
+        return $this->render('MoviesBackOfficeBundle:BackOffice:admin.html.twig');
+    }
+    
+    /**
+     * @Route("/ajouter-une-video")
+     * @Template()
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addMovieAction()
+    {
+    	return $this->render('MoviesBackOfficeBundle:BackOffice:addMovie.html.twig');
     }
 }

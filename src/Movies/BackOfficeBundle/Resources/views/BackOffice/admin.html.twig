@@ -2,7 +2,6 @@
 
 {%block stylesheets %}
     {{parent()}}
-<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
 {%endblock%}
 
 {%block title%}{{parent()}} - Administration{%endblock%}
@@ -14,6 +13,6 @@
 
 {%block section%}
 	<h2>Administration</h2>
-	
+<a href="{{ path('movies_moviesbundle_addMovie') }}">Ajouter un film</a>
 	
 {%endblock%}

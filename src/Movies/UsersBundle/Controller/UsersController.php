@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UsersController extends Controller
 {
 	/**
-	 * @Route("/user/{id}")
+	 * @Route("/profil/{id}")
 	 * @Template()
 	 */
 	public function indexAction($id = null)
