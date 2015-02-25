@@ -34,12 +34,12 @@ class UsersController extends Controller
 		$user = new Users();
 		
 		$form = $this->get('form.factory')->createBuilder('form',$user)
-		->add('nom','text',array('required'=>true))
-		->add('prenom','text',array('required'=>true))
-		->add('pseudo','text',array('required'=>true))
-		->add('password','password',array('required'=>true))
-		->add('email','email',array('required'=>true))
-		->add('avatar','file')
+		->add('nom','text')
+		->add('prenom','text')
+		->add('pseudo','text')
+		->add('password','password')
+		->add('email','email')
+		->add('avatar','file', array('required'=>false))
 		->add('S\'inscrire','submit')->getForm();
 		
 		$form->handleRequest($request);
@@ -64,6 +64,22 @@ class UsersController extends Controller
 		}
 		
 		return $this->render('MoviesUsersBundle:Users:inscription.html.twig',array('form'=>$form->createView()));
+	}
+	
+	/**
+	 * @Route("/connexion")
+	 * @Template()
+	 * @param Request $request
+	 */
+	public function connexionAction(Request $request)
+	{
+		$user = new Users();
+		$form = $this->get('form.factory')->createBuilder('form',$user)
+		->add('pseudo','text')
+		->add('password','password')
+		->add('Connecxion','submit')
+		->getForm();
+		return $this->render('MoviesUsersBundle:Users:connexion.html.twig',array('form'=>$form->createView()));
 	}
     
 }
