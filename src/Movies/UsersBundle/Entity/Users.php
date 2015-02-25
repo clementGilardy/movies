@@ -71,6 +71,11 @@ class Users
      * @ORM\Column(name="date_inscription", type="datetime")
      */
     private $dateInscription;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Movies\UsersBundle\Entity\Droit")
+     */
+    private $droit;
 
     /**
      * @var \DateTime
