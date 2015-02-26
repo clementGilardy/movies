@@ -10,10 +10,7 @@ use Movies\MoviesBundle\Entity\Movies;
 class MoviesController extends Controller
 {
     public function indexAction(Request $request)
-    {	
-    	/*$test = "salut";
-    	$session = $request->getSession();
-    	$session->set('test', $test);*/    	
+    {		
     	$em = $this->getDoctrine()->getManager();
     	$movies = $em->getRepository('MoviesMoviesBundle:Movies')->findAll();
        return $this->render('MoviesMoviesBundle:Movies:index.html.twig',array('movies'=>$movies));
