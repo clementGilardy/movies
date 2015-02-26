@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Movies\MoviesBundle\MoviesMoviesBundle(),
             new Movies\UserBundle\MoviesUserBundle(),
+            new Movies\BackOfficeBundle\MoviesBackOfficeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
