@@ -1,10 +1,14 @@
-movies_movies:
-    resource: "@MoviesMoviesBundle/Resources/config/routing.yml"
+movies_back_office:
+    resource: "@MoviesBackOfficeBundle/Resources/config/routing.yml"
     prefix:   /
+
+movies_movies:
+    resource:    "@MoviesMoviesBundle/Resources/config/routing.yml"
+    prefix:    /
     
 login:
-    pattern:   /login
-    defaults:  { _controller: MoviesUserBundle:Security:login }
+    pattern:    /login
+    defaults:   { _controller: MoviesUserBundle:Security:login }
 
 login_check:
     pattern:   /login_check
