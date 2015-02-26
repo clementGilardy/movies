@@ -1,0 +1,7 @@
+parameters:
+#    movies_user.example.class: Movies\UserBundle\Example
+
+services:
+#    movies_user.example:
+#        class: %movies_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
