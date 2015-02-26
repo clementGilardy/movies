@@ -12,7 +12,6 @@ return array(
     'Symfony\\Bundle\\AsseticBundle' => array($vendorDir . '/symfony/assetic-bundle'),
     'Symfony\\' => array($vendorDir . '/symfony/symfony/src'),
     'Sensio\\Bundle\\GeneratorBundle' => array($vendorDir . '/sensio/generator-bundle'),
-    'Sensio\\Bundle\\FrameworkExtraBundle' => array($vendorDir . '/sensio/framework-extra-bundle'),
     'Sensio\\Bundle\\DistributionBundle' => array($vendorDir . '/sensio/distribution-bundle'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Incenteev\\ParameterHandler' => array($vendorDir . '/incenteev/composer-parameter-handler'),
