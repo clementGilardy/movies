@@ -5,6 +5,7 @@ namespace Movies\BackOfficeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 class BackOfficeController extends Controller
 {
@@ -14,7 +15,14 @@ class BackOfficeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('MoviesBackOfficeBundle:BackOffice:admin.html.twig');
+    	if($this->get('security.context')->isGranted('ROLE_ADMIN'))
+    	{
+        	return $this->render('MoviesBackOfficeBundle:BackOffice:admin.html.twig');
+    	}
+    	else
+    	{
+    		throw new AccessDeniedException('Accès limité à l\'administration');
+    	}
     }
     
     /**

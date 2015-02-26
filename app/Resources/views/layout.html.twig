@@ -15,6 +15,9 @@
             <li class="item"><a href="{{path('movies_moviesbundle_home')}}">Accueil</a></li>
             <li class="item"><a href="{{path('movies_moviesbundle_movies')}}">Cinémas</a></li>
             <li class="item"><a href="{{path('movies_moviesbundle_series')}}">Séries</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+            	<li class="item"><a href="{{ path('movies_backoffice_backoffice_index') }}">Administration</a></li>
+            {% endif %}
         </ul>
     </div>
     </header>

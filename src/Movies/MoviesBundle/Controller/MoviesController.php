@@ -23,11 +23,6 @@ class MoviesController extends Controller
     {	
         return $this->render('MoviesMoviesBundle:Movies:films.html.twig'); 
     }
-
-    public function seriesAction(Request $request)
-    {
-        return $this->render('MoviesMoviesBundle:Movies:series.html.twig');
-    }
     
     public function addMovieAction()
     {

@@ -6,3 +6,13 @@ movies_back_office:
 movies_movies:
     resource: "@MoviesMoviesBundle/Resources/config/routing.yml"
     prefix:   /
+    
+login:
+    pattern:   /login
+    defaults:  { _controller: MoviesUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
