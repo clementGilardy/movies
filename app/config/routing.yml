@@ -1,8 +1,3 @@
-movies_back_office:
-    resource: "@MoviesBackOfficeBundle/Controller/"
-    type:     annotation
-    prefix:   /admin
-
 movies_movies:
     resource: "@MoviesMoviesBundle/Resources/config/routing.yml"
     prefix:   /
