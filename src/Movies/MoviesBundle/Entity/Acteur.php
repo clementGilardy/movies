@@ -5,7 +5,7 @@ namespace Movies\MoviesBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Acteur
+ * Acteurs
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Movies\MoviesBundle\Entity\ActeurRepository")
