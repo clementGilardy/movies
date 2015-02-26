@@ -1,0 +1,7 @@
+parameters:
+#    movies_back_office.example.class: Movies\BackOfficeBundle\Example
+
+services:
+#    movies_back_office.example:
+#        class: %movies_back_office.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
