@@ -10,6 +10,10 @@ login:
     pattern:    /login
     defaults:   { _controller: MoviesUserBundle:Security:login }
 
+signin:
+    pattern:    /signin
+    defaults:   { _controller: MoviesUserBundle:Security:signin }
+
 login_check:
     pattern:   /login_check
 
