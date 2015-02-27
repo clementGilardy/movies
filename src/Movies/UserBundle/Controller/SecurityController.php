@@ -31,4 +31,9 @@ class SecurityController extends Controller
 				'error'         => $error,
 		));
 	}
+	
+	public function signinAction(Request $request)
+	{
+		return $this->render('MoviesUserBundle:Security:signin.html.twig');
+	}
 }
