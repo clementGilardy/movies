@@ -11,7 +11,6 @@ class MoviesController extends Controller
 {
     public function indexAction(Request $request)
     {	
-    	//test	
     	$em = $this->getDoctrine()->getManager();
     	$movies = $em->getRepository('MoviesMoviesBundle:Movies')->findAll();
        return $this->render('MoviesMoviesBundle:Movies:index.html.twig',array('movies'=>$movies));
@@ -20,10 +19,5 @@ class MoviesController extends Controller
     public function moviesAction(Request $request)
     {	
         return $this->render('MoviesMoviesBundle:Movies:films.html.twig'); 
-    }
-    
-    public function addMovieAction()
-    {
-    	return $this->render('MoviesMoviesBundle:Movies:formAjoutMovie.html.twig');
     }
 }

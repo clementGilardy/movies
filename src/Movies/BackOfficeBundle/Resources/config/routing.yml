@@ -1,3 +1,7 @@
 movies_back_office_homepage:
     path:     /admin
     defaults: { _controller: MoviesBackOfficeBundle:Admin:index }
+
+movies_back_office_addMovies:
+    path:   /ajouter-un-film
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:addMovie }

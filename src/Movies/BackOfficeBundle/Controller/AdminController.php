@@ -12,4 +12,9 @@ class AdminController extends Controller
     {	
        return $this->render('MoviesBackOfficeBundle:Admin:index.html.twig');
     }
+    
+    public function addMovieAction(Request $request)
+    {
+    	return $this->render('MoviesBackOfficeBundle:Admin:addMovie.html.twig');
+    }
 }
