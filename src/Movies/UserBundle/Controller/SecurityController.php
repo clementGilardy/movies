@@ -5,6 +5,7 @@ namespace Movies\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Movies\UserBundle\Entity\User;
 
 class SecurityController extends Controller
 {
@@ -34,6 +35,29 @@ class SecurityController extends Controller
 	
 	public function signinAction(Request $request)
 	{
-		return $this->render('MoviesUserBundle:Security:signin.html.twig');
+		
+		$user = new User();
+		
+		$form = $this->get('form.factory')->createBuilder('form',$user)
+		->add('username','text')
+		->add('password','password')
+		->add('email','email')
+		->add('image','file')
+		->add("S'inscrire",'submit')->getForm();
+		
+		$form->handleRequest($request);
+		
+		if ($form->isValid()) {
+			
+			//TODO recovers the path of file's picture AND defind the salt for the password
+		
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($user);
+			$em->flush();
+		
+			return $this->redirect($this->generateUrl('movies_moviesbundle_home'));
+		}
+		
+		return $this->render('MoviesUserBundle:Security:signin.html.twig',array('form'=>$form->createView()));
 	}
 }
