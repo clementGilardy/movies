@@ -37,19 +37,17 @@ class SecurityController extends Controller
 	{
 		
 		$user = new User();
-		
+		$user->setRoles(array('ROLE_ADMIN'));
 		$form = $this->get('form.factory')->createBuilder('form',$user)
 		->add('username','text')
 		->add('password','password')
 		->add('email','email')
-		->add('image','file')
 		->add("S'inscrire",'submit')->getForm();
 		
 		$form->handleRequest($request);
 		
 		if ($form->isValid()) {
 			
-			//TODO recovers the path of file's picture AND defind the salt for the password
 		
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($user);
