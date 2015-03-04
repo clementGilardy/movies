@@ -1,7 +1,49 @@
 {% extends "::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('bundles/moviesuser/form.css')}}">
+{% endblock %}
+
+{% block arianne %}
+ 	{{ parent() }} <img height="15px" src="{{asset('images/arrow.png')}}"/> Inscription
+{% endblock %}
+    
 {% block section %}
 
 <h1>Inscription</h1>
-{{ form(form) }}
+
+<div id="form">
+ {{ form_start(form) }}
+	 <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.username, "Username") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.username) }}
+
+      {{ form_widget(form.username) }}
+    </div>
+	
+	<div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.password, "Password") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.password) }}
+
+      {{ form_widget(form.password) }}
+    </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.email, "Email") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.email) }}
+
+      {{ form_widget(form.email) }}
+    </div>
+ {{ form_end(form) }}
+</div>
 {% endblock %}
