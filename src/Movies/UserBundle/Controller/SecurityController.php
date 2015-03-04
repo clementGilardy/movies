@@ -33,7 +33,7 @@ class SecurityController extends Controller
 		));
 	}
 	
-	public function signinAction(Request $request)
+	public function signupAction(Request $request)
 	{
 		
 		$user = new User();
@@ -56,6 +56,6 @@ class SecurityController extends Controller
 			return $this->redirect($this->generateUrl('movies_moviesbundle_home'));
 		}
 		
-		return $this->render('MoviesUserBundle:Security:signin.html.twig',array('form'=>$form->createView()));
+		return $this->render('MoviesUserBundle:Security:signup.html.twig',array('form'=>$form->createView()));
 	}
 }
