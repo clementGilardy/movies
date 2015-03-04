@@ -18,6 +18,13 @@
             {% if is_granted('ROLE_ADMIN') %}
             	<li class="item"><a href="{{ path('movies_back_office_homepage') }}">Administration</a></li>
             {% endif %}
+            {% if is_granted('ROLE_USER') is empty %}
+	            <li class="item"><a href="{{ path('signin') }}">Inscription</a></li>
+	            <li class="item"><a href="{{ path('login') }}">Connexion</a></li>
+	        {% else %}
+	        	
+	        	<li class="item"><a href="{{ path('logout') }}">Deconnexion</a></li>
+            {% endif %}
         </ul>
     </div>
     </header>
