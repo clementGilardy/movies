@@ -11,8 +11,8 @@ login:
     defaults:   { _controller: MoviesUserBundle:Security:login }
 
 signin:
-    pattern:    /signin
-    defaults:   { _controller: MoviesUserBundle:Security:signin }
+    pattern:    /signup
+    defaults:   { _controller: MoviesUserBundle:Security:signup }
 
 login_check:
     pattern:   /login_check
