@@ -5,3 +5,7 @@ movies_back_office_homepage:
 movies_back_office_addMovies:
     path:   /ajouter-un-film
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addMovie }
+    
+movies_back_office_addActeur:
+    path: /ajouter-un-acteur
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:addActeur }

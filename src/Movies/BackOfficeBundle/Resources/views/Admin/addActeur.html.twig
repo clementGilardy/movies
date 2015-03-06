@@ -6,17 +6,16 @@
 
 {%endblock%}
 
-{%block title%}{{parent()}} - Ajouter un film{%endblock%}
+{%block title%}{{parent()}} - Ajouter un acteur{%endblock%}
 
 {% block arianne %}
 	{{ parent() }}
 	<img height="15px" src="{{asset('images/arrow.png')}}"/>
 	<a href="{{ path('movies_back_office_homepage') }}">Administration</a>
-	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_addMovies') }}">Ajouter un film</a>
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_addActeur') }}">Ajouter un acteur</a>
 {% endblock %}
 
 {%block section%}
-<h1>Ajouter un film</h1>
-<p>Si les acteurs de votre films ne sont pas présent, veuillez avant tous les <a href="{{ path('movies_back_office_addActeur') }}">ajouter</a> !</p>
-{{ form(form) }}
+<h1>Ajouter un acteur</h1>
+
 {%endblock%}

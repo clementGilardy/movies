@@ -10,10 +10,11 @@
 
 {% block arianne %}
 	{{ parent() }}
-	<img height="15px" src="{{asset('images/arrow.png')}}"/> Administration
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_homepage') }}">Administration</a>
 {% endblock %}
 
 {%block section%}
 <h1>Administration</h1>
-<a href="{{ path('movies_back_office_addMovies') }}">Ajouter un film</a>
+<a href="{{ path('movies_back_office_addMovies') }}">Ajouter un film</a><br>
+<a href="{{ path('movies_back_office_addActeur') }}">Ajouter un acteur</a>
 {%endblock%}
