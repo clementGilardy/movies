@@ -2,7 +2,7 @@
 
 {%block stylesheets %}
     {{parent()}}
-<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}"> 
+<link rel="stylesheet" href="{{asset('bundles/moviesbackoffice/css/form.css')}}"> 
 
 {%endblock%}
 
@@ -18,5 +18,58 @@
 {%block section%}
 <h1>Ajouter un film</h1>
 <p>Si les acteurs de votre films ne sont pas présent, veuillez avant tous les <a href="{{ path('movies_back_office_addActeur') }}">ajouter</a> !</p>
-{{ form(form) }}
+<div id="form">
+ {{ form_start(form) }}
+	 <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.titre, "Titre") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.titre) }}
+
+      {{ form_widget(form.titre) }}
+    </div>
+	
+	<div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.acteur, "Acteurs") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.acteur) }}
+
+      {{ form_widget(form.acteur) }}
+    </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.synopsis, "Synopsis") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.synopsis) }}
+
+      {{ form_widget(form.synopsis) }}
+    </div>
+    
+     <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.dateRelease, "Date de sortie") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.dateRelease) }}
+
+      {{ form_widget(form.dateRelease) }}
+    </div>
+    
+     <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.image, "Affiche") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.image) }}
+
+      {{ form_widget(form.image) }}
+    </div>
+    
+ {{ form_end(form) }}
+</div>
 {%endblock%}
