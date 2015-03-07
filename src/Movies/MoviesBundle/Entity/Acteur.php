@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Acteurs
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Movies\MoviesBundle\Entity\ActeurRepository")
  */
