@@ -21,7 +21,11 @@ class AdminController extends Controller
     	
     	$form = $this->get('form.factory')->createBuilder('form',$movie)
     	->add('titre','text')
-    	->add('acteur','collection')
+    	->add('acteur','entity', array(
+    			'class'=>'MoviesMoviesBundle:Acteur',
+    			'property'=>'nom','expanded'=>false,
+    			'multiple'=>true, 'label'=>true
+    	))
     	->add('synopsis','textarea')
     	->add('dateRelease','date')
     	->add('image','file')
