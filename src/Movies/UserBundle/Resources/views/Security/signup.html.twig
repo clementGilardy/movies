@@ -1,10 +1,5 @@
 {% extends "::layout.html.twig" %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{asset('bundles/moviesuser/form.css')}}">
-{% endblock %}
-
 {% block arianne %}
  	{{ parent() }} <img height="15px" src="{{asset('images/arrow.png')}}"/> Inscription
 {% endblock %}
@@ -13,37 +8,44 @@
 
 <h1>Inscription</h1>
 
-<div id="form">
- {{ form_start(form) }}
-	 <div class="form-group">
-      {# Génération du label. #}
-      {{ form_label(form.username, "Username") }}
-
-      {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.username) }}
-
-      {{ form_widget(form.username) }}
+{{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+	<div class="form-group">
+	      {# Génération du label. #}
+	      {{ form_label(form.username, "Username", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+	
+	      {# Affichage des erreurs pour ce champ précis. #}
+	      {{ form_errors(form.username) }}
+		<div class="col-sm-2">		
+	      {{ form_widget(form.username,{'attr': {'class': 'form-control'}}) }}
+	    </div>
     </div>
 	
 	<div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.password, "Password") }}
+      {{ form_label(form.password, "Password",{'label_attr': {'class': 'col-sm-1 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
       {{ form_errors(form.password) }}
-
-      {{ form_widget(form.password) }}
+		<div class="col-sm-2">
+      		{{ form_widget(form.password,{'attr': {'class': 'form-control'}}) }}
+      	</div>
     </div>
     
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.email, "Email") }}
+      {{ form_label(form.email, "Email",{'label_attr': {'class': 'col-sm-1 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
       {{ form_errors(form.email) }}
-
-      {{ form_widget(form.email) }}
+		<div class="col-sm-3">
+      		{{ form_widget(form.email,{'attr': {'class': 'form-control'}}) }}
+      	</div>
     </div>
- {{ form_end(form) }}
-</div>
+    <div class="form-group">
+    	<div class="col-sm-offset-0 col-sm-10">
+    		{{ form_widget(form.inscrire,{'attr': {'class': 'btn btn-default'}}) }}
+    	</div>
+    </div>
+{{ form_end(form) }}
+
 {% endblock %}

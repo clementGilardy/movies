@@ -33,6 +33,12 @@ class Acteur
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
+    
+    /**
+     * @var string
+     *  @ORM\Column(name="nomComplet", type="string", length=255)
+     */
+    private $nomComplet;
 
     /**
      * @var string
@@ -118,5 +124,28 @@ class Acteur
     public function getBiographie()
     {
         return $this->biographie;
+    }
+
+    /**
+     * Set nomComplet
+     *
+     * @param string $nomComplet
+     * @return Acteur
+     */
+    public function setNomComplet($nomComplet)
+    {
+        $this->nomComplet = $nomComplet;
+
+        return $this;
+    }
+
+    /**
+     * Get nomComplet
+     *
+     * @return string 
+     */
+    public function getNomComplet()
+    {
+        return $this->nomComplet;
     }
 }

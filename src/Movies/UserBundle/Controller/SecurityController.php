@@ -42,7 +42,7 @@ class SecurityController extends Controller
 		->add('username','text')
 		->add('password','password')
 		->add('email','email')
-		->add("S'inscrire",'submit')->getForm();
+		->add("inscrire",'submit',array('label'=>'S\'inscrire'))->getForm();
 		
 		$form->handleRequest($request);
 		
