@@ -2,8 +2,6 @@
 
 {%block stylesheets %}
     {{parent()}}
-<link rel="stylesheet" href="{{asset('bundles/moviesbackoffice/css/form.css')}}"> 
-
 {%endblock%}
 
 {%block title%}{{parent()}} - Ajouter un film{%endblock%}
@@ -18,58 +16,71 @@
 {%block section%}
 <h1>Ajouter un film</h1>
 <p>Si les acteurs de votre films ne sont pas présent, veuillez avant tous les <a href="{{ path('movies_back_office_addActeur') }}">ajouter</a> !</p>
-<div id="form">
- {{ form_start(form) }}
+
+ {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 	 <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.titre, "Titre") }}
+      	{{ form_label(form.titre, "Titre",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.titre) }}
-
-      {{ form_widget(form.titre) }}
+      	{{ form_errors(form.titre) }}
+	 	<div class="col-sm-3">
+      		{{ form_widget(form.titre,{'attr': {'class': 'form-control'}}) }}
+      	</div>
     </div>
 	
 	<div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.acteur, "Acteurs") }}
+      	{{ form_label(form.acteur, "Acteurs",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.acteur) }}
-
-      {{ form_widget(form.acteur) }}
+    	  {{ form_errors(form.acteur) }}
+		<div class="col-sm-3">
+      		{{ form_widget(form.acteur) }}
+      	</div>
     </div>
     
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.synopsis, "Synopsis") }}
+      {{ form_label(form.synopsis, "Synopsis", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
       {{ form_errors(form.synopsis) }}
-
-      {{ form_widget(form.synopsis) }}
+	  <div class="col-sm-3">
+      	{{ form_widget(form.synopsis,{'attr': {'class': 'form-control'}}) }}
+      </div>
     </div>
     
      <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.dateRelease, "Date de sortie") }}
+      {{ form_label(form.dateRelease, "Date de sortie",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
       {{ form_errors(form.dateRelease) }}
-
-      {{ form_widget(form.dateRelease) }}
+		<div class="col-sm-3">
+    		  {{ form_widget(form.dateRelease, {'attr' : {'class' : 'form-control'}}) }}
+    	</div>
     </div>
     
      <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.image, "Affiche") }}
+      {{ form_label(form.image, "Affiche",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
       {{ form_errors(form.image) }}
-
-      {{ form_widget(form.image) }}
+		<div class="col-sm-3">
+      		{{ form_widget(form.image, {'attr' : {'title' : 'Parcourir...'}}) }}
+      	</div>
     </div>
-    
+    <div class="form-group">	
+    	<div class="col-sm-offset-1 col-sm-10">
+    		{{ form_widget(form.Ajouter,{'attr' : {'class' : 'btn btn-default'}}) }}
+    	</div>
+    </div>
  {{ form_end(form) }}
-</div>
 {%endblock%}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('bundles/moviesbackoffice/js/multiselect.js') }}"></script>
+{% endblock %}

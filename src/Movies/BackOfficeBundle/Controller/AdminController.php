@@ -23,13 +23,29 @@ class AdminController extends Controller
     	->add('titre','text')
     	->add('acteur','entity', array(
     			'class'=>'MoviesMoviesBundle:Acteur',
-    			'property'=>'nom','expanded'=>false,
+    			'property'=>'nomComplet','expanded'=>false,
     			'multiple'=>true, 'label'=>true
     	))
     	->add('synopsis','textarea')
-    	->add('dateRelease','date')
+    	->add('dateRelease','date',array(
+    			'format'=> 'yyyy-MM-dd',
+    			'widget'=> 'single_text',
+    			'attr' => array('placeholder'=>'YYYY-MM-DD')
+    	))
     	->add('image','file')
-    	->add('Ajouter','submit')->getForm();
+    	->add('Ajouter','submit',array('label'=>'Ajouter un film'))->getForm();
+    	
+    	$form->handleRequest($request);
+    	 
+    	if ($form->isValid()) {
+    		 
+    		$em = $this->getDoctrine()->getManager();
+    		$em->persist($movie);
+    		$em->flush();
+    		$request->getSession()->getFlashBag()->add('notice', 'Le film "'.$movie->getTitre().'" à bien été enregistré !');
+    		return $this->redirect($this->generateUrl('movies_back_office_addActeur'));
+    	}
+    	
     	
     	return $this->render('MoviesBackOfficeBundle:Admin:addMovie.html.twig',array('form'=>$form->createView()));
     }
@@ -42,17 +58,18 @@ class AdminController extends Controller
     	->add('nom','text')
     	->add('prenom','text')
     	->add('biographie','textarea',array('required'=>false))
-    	->add('Ajouter','submit')->getForm();
+    	->add('Ajouter','submit',array('label'=>'Ajouter un acteur'))->getForm();
     	
     	$form->handleRequest($request);
     	
-    	if ($form->isValid()) {
-    			
+    	if ($form->isValid()) 
+    	{
+			$acteur->setNomComplet($acteur->getPrenom().' '.$acteur->getNom());    			
     	
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($acteur);
     		$em->flush();
-    		$request->getSession()->getFlashBag()->add('notice', 'Acteur bien enregistré !');
+    		$request->getSession()->getFlashBag()->add('notice', 'L\'acteur "'.$acteur->getNomComplet().'" à bien été enregistré !');
     		return $this->redirect($this->generateUrl('movies_back_office_addActeur'));
     	}
     	
