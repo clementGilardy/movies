@@ -15,7 +15,7 @@
 {%block section%}
 	<h2>Index</h2>
 	{% for movie in movies%}
-		<p>{{ movie.titre }}</p>
+		<p><img src="{{ asset(movie.getUploadDir()~'/'~movie.image) }}" alt="" /></p>
 	{% endfor %}
 	
 {%endblock%}

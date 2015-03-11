@@ -45,12 +45,12 @@
     
     <div class="form-group">
       {# Génération du label. #}
-      {{ form_label(form.image, "Portrait", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+      {{ form_label(form.file, "Portrait", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-      {{ form_errors(form.image) }}
+      {{ form_errors(form.file) }}
  	 	 <div class="col-sm-3">
-			{{ form_widget(form.image, {'attr' : {'title' : 'Parcourir...'}}) }}
+			{{ form_widget(form.file, {'attr' : {'title' : 'Parcourir...'}}) }}
      	 </div>
     </div>
     

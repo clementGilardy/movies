@@ -3,11 +3,13 @@
 namespace Movies\MoviesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Acteurs
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Movies\MoviesBundle\Entity\ActeurRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Acteur
 {
@@ -35,9 +37,14 @@ class Acteur
     private $prenom;
     
     /**
+     * @Assert\File(maxSize="1M")
+     */
+    private $file;
+    
+    /**
      * @var string
      *
-     * @ORM\Column(name="image", type="text")
+     * @ORM\Column(name="image", type="text", nullable=true)
      */
     private $image;
     
@@ -168,6 +175,17 @@ class Acteur
 
         return $this;
     }
+    
+    public function getFile()
+    {
+    	return $this->file;
+    }
+    
+    public function setFile($f)
+    {
+    	$this->file = $f;
+    	return $this;
+    }
 
     /**
      * Get image
@@ -177,5 +195,54 @@ class Acteur
     public function getImage()
     {
         return $this->image;
+    }
+    
+    public function getUploadRootDir()
+    {
+    	return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    
+    public function getUploadDir()
+    {
+    	return 'uploads/acteurs';
+    }
+    
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+    	if ($file = $this->getAbsolutePath()) {
+    		unlink($file);
+    	}
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+    	if (null !== $this->file) {
+    		// faites ce que vous voulez pour générer un nom unique
+    		$this->image = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+    	}
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+    	if (null === $this->file) {
+    		return;
+    	}
+    	
+    	$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+    	
+    	$this->image = $this->file->getClientOriginalName();
+    	
+    	$this->file = null;
     }
 }

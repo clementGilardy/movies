@@ -4,6 +4,8 @@ namespace Movies\MoviesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Movies
@@ -55,12 +57,17 @@ class Movies
      */
     private $dateRelease;
     
+    /**
+     * @Assert\File(maxSize="1M")
+     */
+    private $file;
+    
     
     /**
      * 
      * @var string
      * 
-     * @ORM\Column(name="jaquette", type="text",nullable=false)
+     * @ORM\Column(name="jaquette", type="text",nullable=true)
      */
     private $image;
     
@@ -72,9 +79,7 @@ class Movies
 
     public function __construct()
     {
-    	$this->commentaires = new ArrayCollection();
-    	$this->votes 		= new ArrayCollection();
-    	$this->acteur   	= new ArrayCollection();
+
     }
 
     /**
@@ -225,6 +230,27 @@ class Movies
 
         return $this;
     }
+    
+    public function upload()
+    {
+    	if (null === $this->file) {
+    		return;
+    	}
+    	$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+    	$this->image = $this->file->getClientOriginalName();
+    	$this->file = null;
+    }
+    
+    public function getFile()
+    {
+    	return $this->file;
+    }
+    
+    public function setFile($file)
+    {
+    	$this->file = $file;
+    	return $this;
+    }
 
     /**
      * Get image
@@ -254,12 +280,24 @@ class Movies
    
    public function addCommentaire(Commentaire $commentaire)
    {
-   		$this->commentaires[] = $commentaire;
-   		return this;
+	   	if(!$this->commentaires->contains($commentaire))
+	   	{
+	   		$this->commentaires->add($commentaire);
+	   	}
    }
    
    public function removeCommentaire(Commentaire $commentaire)
    {
    		$this->commentaires->removeElement($commentaire);
+   }
+   
+   public function getUploadRootDir()
+   {
+   		return __DIR__.'/../../../../web/'.$this->getUploadDir();
+   }
+   
+   public function getUploadDir()
+   {
+   		return 'uploads/poster';
    }
 }

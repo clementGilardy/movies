@@ -32,13 +32,13 @@ class AdminController extends Controller
     			'widget'=> 'single_text',
     			'attr' => array('placeholder'=>'YYYY-MM-DD')
     	))
-    	->add('image','file')
+    	->add('file','file')
     	->add('Ajouter','submit',array('label'=>'Ajouter un film'))->getForm();
     	
     	$form->handleRequest($request);
     	 
     	if ($form->isValid()) {
-    		 
+    		$movie->upload();
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($movie);
     		$em->flush();
@@ -57,7 +57,7 @@ class AdminController extends Controller
     	$form = $this->get('form.factory')->createBuilder('form',$acteur)
     	->add('nom','text')
     	->add('prenom','text')
-    	->add('image','file')
+    	->add('file')
     	->add('biographie','textarea',array('required'=>false))
     	->add('Ajouter','submit',array('label'=>'Ajouter un acteur'))->getForm();
     	
@@ -66,7 +66,7 @@ class AdminController extends Controller
     	if ($form->isValid()) 
     	{
 			$acteur->setNomComplet($acteur->getPrenom().' '.$acteur->getNom());    			
-    	
+    		$acteur->upload();
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($acteur);
     		$em->flush();
