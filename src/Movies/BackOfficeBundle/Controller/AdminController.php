@@ -57,6 +57,7 @@ class AdminController extends Controller
     	$form = $this->get('form.factory')->createBuilder('form',$acteur)
     	->add('nom','text')
     	->add('prenom','text')
+    	->add('image','file')
     	->add('biographie','textarea',array('required'=>false))
     	->add('Ajouter','submit',array('label'=>'Ajouter un acteur'))->getForm();
     	

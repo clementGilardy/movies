@@ -36,6 +36,13 @@ class Acteur
     
     /**
      * @var string
+     *
+     * @ORM\Column(name="image", type="text")
+     */
+    private $image;
+    
+    /**
+     * @var string
      *  @ORM\Column(name="nomComplet", type="string", length=255)
      */
     private $nomComplet;
@@ -147,5 +154,28 @@ class Acteur
     public function getNomComplet()
     {
         return $this->nomComplet;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Acteur
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -1,11 +1,9 @@
-{% extends "::layout.html.twig" %}
+{% extends "MoviesBackOfficeBundle::layout.html.twig" %}
 
 {%block title%}{{parent()}} - Ajouter un acteur{%endblock%}
 
 {% block arianne %}
 	{{ parent() }}
-	<img height="15px" src="{{asset('images/arrow.png')}}"/>
-	<a href="{{ path('movies_back_office_homepage') }}">Administration</a>
 	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_addActeur') }}">Ajouter un acteur</a>
 {% endblock %}
 
@@ -47,6 +45,17 @@
     
     <div class="form-group">
       {# Génération du label. #}
+      {{ form_label(form.image, "Portrait", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.image) }}
+ 	 	 <div class="col-sm-3">
+			{{ form_widget(form.image, {'attr' : {'title' : 'Parcourir...'}}) }}
+     	 </div>
+    </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
       {{ form_label(form.biographie, "Biographie", {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
@@ -62,3 +71,8 @@
     </div>
  {{ form_end(form) }}
 {%endblock%}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('bundles/moviesbackoffice/js/multiselect.js') }}"></script>
+{% endblock %}

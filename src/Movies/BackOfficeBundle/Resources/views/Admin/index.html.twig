@@ -1,4 +1,4 @@
-{% extends "::layout.html.twig" %}
+{% extends "MoviesBackOfficeBundle::layout.html.twig" %}
 
 {%block stylesheets %}
     {{parent()}}
@@ -6,15 +6,21 @@
 
 {%endblock%}
 
-{%block title%}{{parent()}} - Administration{%endblock%}
-
 {% block arianne %}
 	{{ parent() }}
 	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_homepage') }}">Administration</a>
 {% endblock %}
 
+{% block aside %}
+{% endblock %}
+
 {%block section%}
-<h1>Administration</h1>
-<a href="{{ path('movies_back_office_addMovies') }}">Ajouter un film</a><br>
-<a href="{{ path('movies_back_office_addActeur') }}">Ajouter un acteur</a>
+{{ parent() }}
+
+<div class="list-group">
+	<a href="{{ path('movies_back_office_addActeur') }}" class="list-group-item">Ajouter un acteur</a>
+	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Ajouter un film</a>
+</div>
+
 {%endblock%}
+
