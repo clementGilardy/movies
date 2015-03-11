@@ -1,0 +1,33 @@
+{% extends "::layout.html.twig" %}
+
+{%block stylesheets %}
+    {{parent()}}
+<link rel="stylesheet" href="{{asset('bundles/moviesbackoffice/css/menu.css')}}"> 
+
+{%endblock%}
+
+{%block title%}{{parent()}} - Administration{%endblock%}
+
+{% block arianne %}
+	{{ parent() }}
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_homepage') }}">Administration</a>
+{% endblock %}
+
+
+{% block aside %}
+	<div class="panel panel-danger">
+		<div class="panel-heading">Menu administration</div>
+		<div class="list-group">
+			<a href="{{ path('movies_back_office_homepage') }}" class="list-group-item">Administration</a>
+			<a class="list-group-item" href="{{ path('movies_back_office_addMovies') }}">Ajouter un film</a>
+			<a class="list-group-item" href="{{ path('movies_back_office_addActeur') }}">Ajouter un acteur</a>
+		</div>
+	</div>
+{% endblock %}
+
+{%block section%}
+<h1>Administration</h1>
+
+{%endblock%}
+
+
