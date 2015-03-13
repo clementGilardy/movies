@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Movies\MoviesBundle\Entity\Movies;
 use Movies\MoviesBundle\Entity\Acteur;
+use Movies\MoviesBundle\Entity\Realisateur;
 
 class AdminController extends Controller
 {
@@ -90,6 +91,7 @@ class AdminController extends Controller
     
     public function addRealisateurAction(Request $request)
     {
+    	
     	return $this->render('MoviesBackOfficeBundle:Admin:addRealisateur.html.twig');
     }
 }

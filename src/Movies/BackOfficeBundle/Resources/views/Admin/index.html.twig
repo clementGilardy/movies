@@ -2,7 +2,8 @@
 
 {%block stylesheets %}
     {{parent()}}
-<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}"> 
+<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
+<link rel="stylesheet" href="{{asset('bundles/moviesbackoffice/css/admin.css')}}">  
 
 {%endblock%}
 
@@ -17,11 +18,24 @@
 {%block section%}
 {{ parent() }}
 
-<div class="list-group">
-	<a href="{{ path('movies_back_office_addActeur') }}" class="list-group-item">Ajouter un acteur</a>
-	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Ajouter un film</a>
+<ul class="nav nav-tabs">
+	<li role="presentation" class="gestion active"><a href="">Gestion</a></li>
+	<li role="presentation" class="gestion-films"><a href="">Gestion des films</a></li>
+	<li role="presentation" class="gestion-series"><a href="">Gestion des Séries</a></li>
+</ul>
+
+<div class="gestion list-group">
 	<a href="{{ path('movies_back_office_addRealisateur') }}" class="list-group-item">Ajouter un réalisateur</a>
+	<a href="{{ path('movies_back_office_addActeur') }}" class="list-group-item">Ajouter un acteur</a>
 </div>
+<div class="gestion-films list-group">
+	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Ajouter un film</a>
+</div>
+ 
 
 {%endblock%}
 
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('bundles/moviesbackoffice/js/admin.js') }}"></script>
+{% endblock %}
