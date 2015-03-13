@@ -62,6 +62,13 @@ class Movies
      */
     private $file;
     
+    /**
+     * 
+     * @var string
+     * @ORM\Column(name="realisateur", type="string", length=255)
+     */
+    private $realisateur;
+    
     
     /**
      * 
@@ -300,4 +307,40 @@ class Movies
    {
    		return 'uploads/poster';
    }
+
+    /**
+     * Set realisateur
+     *
+     * @param string $realisateur
+     * @return Movies
+     */
+    public function setRealisateur($realisateur)
+    {
+        $this->realisateur = $realisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get realisateur
+     *
+     * @return string 
+     */
+    public function getRealisateur()
+    {
+        return $this->realisateur;
+    }
+
+    /**
+     * Set votes
+     *
+     * @param \Movies\MoviesBundle\Entity\Votes $votes
+     * @return Movies
+     */
+    public function setVotes(\Movies\MoviesBundle\Entity\Votes $votes = null)
+    {
+        $this->votes = $votes;
+
+        return $this;
+    }
 }
