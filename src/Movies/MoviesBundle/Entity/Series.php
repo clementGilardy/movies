@@ -35,6 +35,32 @@ class Series
      * @ORM\Column(name="synopsis", type="text")
      */
     private $synopsis;
+    
+    /**
+     * 
+     * @var integer
+     * @ORM\Column(name="duration", type="integer")
+     */
+    private $duration;
+    
+    /**
+     * 
+     * @var String
+     * @ORM\Column(name="statut", type="text")
+     */
+    private $statut;
+    
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="Movies\MoviesBundle\Entity\Genre")
+     */
+    private $genres;
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Realisateur")
+     */
+    private $realisateur;
 
     /**
      *
@@ -59,14 +85,18 @@ class Series
      * @ORM\ManyToMany(targetEntity="Movies\MoviesBundle\Entity\Acteur")
      */
     private $acteur;
+    
+    /**
+     * 
+     * @var integer
+     * @ORM\Column(name="dateRelase", type="integer")
+     */
+    private $dateRelease;
 
 
     public function __construct()
     {
-    	$this->commentaire = new ArrayCollection();
-    	$this->vote        = new ArrayCollection();
-    	$this->acteur      = new ArrayCollection();
-    	$this->episodes    = new ArrayCollection();
+   
     }
     
     public function addCommentaire(Commentaire $commentaire)
@@ -261,5 +291,130 @@ class Series
     public function getActeur()
     {
         return $this->acteur;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     * @return Series
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer 
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Series
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set dateRelease
+     *
+     * @param integer $dateRelease
+     * @return Series
+     */
+    public function setDateRelease($dateRelease)
+    {
+        $this->dateRelease = $dateRelease;
+
+        return $this;
+    }
+
+    /**
+     * Get dateRelease
+     *
+     * @return integer 
+     */
+    public function getDateRelease()
+    {
+        return $this->dateRelease;
+    }
+
+    /**
+     * Add genres
+     *
+     * @param \Movies\MoviesBundle\Entity\Genre $genres
+     * @return Series
+     */
+    public function addGenre(\Movies\MoviesBundle\Entity\Genre $genres)
+    {
+        $this->genres[] = $genres;
+
+        return $this;
+    }
+
+    /**
+     * Remove genres
+     *
+     * @param \Movies\MoviesBundle\Entity\Genre $genres
+     */
+    public function removeGenre(\Movies\MoviesBundle\Entity\Genre $genres)
+    {
+        $this->genres->removeElement($genres);
+    }
+
+    /**
+     * Get genres
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGenres()
+    {
+        return $this->genres;
+    }
+
+    /**
+     * Set realisateur
+     *
+     * @param \Movies\MoviesBundle\Entity\Realisateur $realisateur
+     * @return Series
+     */
+    public function setRealisateur(\Movies\MoviesBundle\Entity\Realisateur $realisateur = null)
+    {
+        $this->realisateur = $realisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get realisateur
+     *
+     * @return \Movies\MoviesBundle\Entity\Realisateur 
+     */
+    public function getRealisateur()
+    {
+        return $this->realisateur;
     }
 }
