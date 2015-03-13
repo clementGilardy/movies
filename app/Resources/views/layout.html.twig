@@ -31,23 +31,25 @@
         </ul>
     </div>
     </header>
-    <div id="arianne">
-    {% block arianne %}
-    <a href="{{ path('movies_moviesbundle_home') }}">Movies</a>
-    {% endblock %}
+    <div id="content">
+	    <div id="arianne">
+		    {% block arianne %}
+		   		 <a href="{{ path('movies_moviesbundle_home') }}">Movies</a>
+		    {% endblock %}
+	    </div>
+	
+	    <aside>
+	    	{% block aside %}
+	    	{% endblock %}
+	    </aside>
+	    <section>
+	       {%block section%}
+	        {%endblock%}
+	    </section>
+	    
+	    <footer>
+	    </footer>
     </div>
-
-    <aside>
-    	{% block aside %}
-    	{% endblock %}
-    </aside>
-    <section>
-       {%block section%}
-        {%endblock%}
-    </section>
-    
-    <footer>
-    </footer>
   {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{ asset('bootstrap-multiselect.js') }}"></script>
