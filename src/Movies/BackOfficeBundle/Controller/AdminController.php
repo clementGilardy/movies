@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Movies\MoviesBundle\Entity\Movies;
 use Movies\MoviesBundle\Entity\Acteur;
 use Movies\MoviesBundle\Entity\Realisateur;
+use Movies\MoviesBundle\Entity\Movies\MoviesBundle\Entity;
 
 class AdminController extends Controller
 {
@@ -54,8 +55,8 @@ class AdminController extends Controller
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($movie);
     		$em->flush();
-    		$request->getSession()->getFlashBag()->add('notice', 'Le film "'.$movie->getTitre().'" à bien été enregistré !');
-    		return $this->redirect($this->generateUrl('movies_back_office_addActeur'));
+    		$request->getSession()->getFlashBag()->add('notice', 'Le film <strong>'.$movie->getTitre().'</strong> à bien été enregistré !');
+    		return $this->redirect($this->generateUrl('movies_back_office_addMovie'));
     	}
     	
     	
@@ -82,7 +83,7 @@ class AdminController extends Controller
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($acteur);
     		$em->flush();
-    		$request->getSession()->getFlashBag()->add('notice', 'L\'acteur "'.$acteur->getNomComplet().'" à bien été enregistré !');
+    		$request->getSession()->getFlashBag()->add('notice', 'L\'acteur <strong>'.$acteur->getNomComplet().'</strong> à bien été enregistré !');
     		return $this->redirect($this->generateUrl('movies_back_office_addActeur'));
     	}
     	
@@ -91,7 +92,26 @@ class AdminController extends Controller
     
     public function addRealisateurAction(Request $request)
     {
+    	$realisateur = new Realisateur();
+    	$form = $this->get('form.factory')->createBuilder('form',$realisateur)
+    	->add('nom','text')
+    	->add('prenom','text')
+    	->add('Ajouter','submit')
+    	->getForm();
     	
-    	return $this->render('MoviesBackOfficeBundle:Admin:addRealisateur.html.twig');
+    	$form->handleRequest($request);
+    	 
+    	if ($form->isValid())
+    	{
+    		$realisateur->setNomComplet($realisateur->getPrenom().' '.$realisateur->getNom());
+    		
+    		$em = $this->getDoctrine()->getManager();
+    		$em->persist($realisateur);
+    		$em->flush();
+    		$request->getSession()->getFlashBag()->add('notice', 'Le réalisateur <strong>'.$realisateur->getNomComplet().'</strong> à bien été enregistré !');
+    		return $this->redirect($this->generateUrl('movies_back_office_addRealisateur'));
+    	}
+    	
+    	return $this->render('MoviesBackOfficeBundle:Admin:addRealisateur.html.twig',array('form'=>$form->createView()));
     }
 }
