@@ -1,9 +1,5 @@
 {% extends "MoviesBackOfficeBundle::layout.html.twig" %}
 
-{%block stylesheets %}
-    {{parent()}}
-{%endblock%}
-
 {%block title%}{{parent()}} - Ajouter un film{%endblock%}
 
 {% block arianne %}
@@ -17,7 +13,7 @@
 	<p>Si les acteurs de votre films ne sont pas présent, veuillez avant tous les <a href="{{ path('movies_back_office_addActeur') }}">ajouter</a> !</p>
 
  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-	 <div class="form-group">
+	<div class="form-group">
       {# Génération du label. #}
       	{{ form_label(form.titre, "Titre",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
@@ -27,15 +23,50 @@
       		{{ form_widget(form.titre,{'attr': {'class': 'form-control'}}) }}
       	</div>
     </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
+      	{{ form_label(form.realisateur, "Realisateur",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      	{{ form_errors(form.realisateur) }}
+	 	<div class="col-sm-3">
+      		{{ form_widget(form.realisateur,{'attr': {'class': 'selectpicker', 'data-live-search':'true', 'title':'Selectionner le réalisateur'}}) }}
+      	</div>
+    </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}       
+	  {{ form_label(form.duration, "Durée",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+	      {# Affichage des erreurs pour ce champ précis. #}
+	      	{{ form_errors(form.duration) }}
+		 	<div class="col-sm-2">
+			 	<div class="input-group">
+				 	<div class="input-group-addon">min</div>
+			      		{{ form_widget(form.duration,{'attr': {'class': 'form-control'}}) }}
+			    </div>
+	      	</div>
+    </div>
 	
 	<div class="form-group">
       {# Génération du label. #}
-      	{{ form_label(form.acteur, "Acteurs",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+      	{{ form_label(form.acteurs, "Acteurs",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
       {# Affichage des erreurs pour ce champ précis. #}
-    	  {{ form_errors(form.acteur) }}
+    	  {{ form_errors(form.acteurs) }}
 		<div class="col-sm-3">
-      		{{ form_widget(form.acteur) }}
+      		{{ form_widget(form.acteurs) }}
+      	</div>
+    </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
+      	{{ form_label(form.genres, "Genres",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+    	  {{ form_errors(form.genres) }}
+		<div class="col-sm-3">
+      		{{ form_widget(form.genres) }}
       	</div>
     </div>
     

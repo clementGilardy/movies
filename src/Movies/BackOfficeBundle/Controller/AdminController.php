@@ -21,9 +21,20 @@ class AdminController extends Controller
     	
     	$form = $this->get('form.factory')->createBuilder('form',$movie)
     	->add('titre','text')
-    	->add('acteur','entity', array(
+    	->add('realisateur','entity',array(
+    			'class'=>'MoviesMoviesBundle:Realisateur',
+    			'property'=>'nomComplet','expanded'=>false,
+    			'multiple'=>false, 'label'=>true
+    	))
+    	->add('duration','integer')
+    	->add('acteurs','entity', array(
     			'class'=>'MoviesMoviesBundle:Acteur',
     			'property'=>'nomComplet','expanded'=>false,
+    			'multiple'=>true, 'label'=>true
+    	))
+    	->add('genres','entity',array(
+    			'class'=>'MoviesMoviesBundle:Genre',
+    			'property'=>'nom','expanded'=>false,
     			'multiple'=>true, 'label'=>true
     	))
     	->add('synopsis','textarea')
@@ -75,5 +86,10 @@ class AdminController extends Controller
     	}
     	
     	return $this->render('MoviesBackOfficeBundle:Admin:addActeur.html.twig',array('form'=>$form->createView()));
+    }
+    
+    public function addRealisateurAction(Request $request)
+    {
+    	return $this->render('MoviesBackOfficeBundle:Admin:addRealisateur.html.twig');
     }
 }

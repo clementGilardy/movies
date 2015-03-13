@@ -1,0 +1,22 @@
+{% extends "MoviesBackOfficeBundle::layout.html.twig" %}
+
+{%block title%}{{parent()}} - Ajouter un réalisateur{%endblock%}
+
+{% block arianne %}
+	{{ parent() }}
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_addMovies') }}">Ajouter un réalisateur</a>
+{% endblock %}
+
+{% block section %}
+
+<h1>Ajouter un réalisateur</h1>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('bundles/moviesbackoffice/js/multiselect.js') }}"></script>
+{% endblock %}
+
+
+

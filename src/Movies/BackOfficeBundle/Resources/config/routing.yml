@@ -9,3 +9,7 @@ movies_back_office_addMovies:
 movies_back_office_addActeur:
     path: /ajouter-un-acteur
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addActeur }
+
+movies_back_office_addRealisateur:
+    path: /ajouter-un-realisateur
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:addRealisateur }

@@ -389,27 +389,4 @@ class Movies
     {
         return $this->genres;
     }
-
-    /**
-     * Set realisateur
-     *
-     * @param \Movies\MoviesBundle\Entity\Realisateur $realisateur
-     * @return Movies
-     */
-    public function setRealisateur(\Movies\MoviesBundle\Entity\Realisateur $realisateur = null)
-    {
-        $this->realisateur = $realisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get realisateur
-     *
-     * @return \Movies\MoviesBundle\Entity\Realisateur 
-     */
-    public function getRealisateur()
-    {
-        return $this->realisateur;
-    }
 }
