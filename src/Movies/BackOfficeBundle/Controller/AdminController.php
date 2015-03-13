@@ -60,7 +60,7 @@ class AdminController extends Controller
     	}
     	
     	
-    	return $this->render('MoviesBackOfficeBundle:Admin:addMovie.html.twig',array('form'=>$form->createView()));
+    	return $this->render('MoviesBackOfficeBundle:Admin:Add/addMovie.html.twig',array('form'=>$form->createView()));
     }
     
     public function addActeurAction(Request $request)
@@ -87,7 +87,7 @@ class AdminController extends Controller
     		return $this->redirect($this->generateUrl('movies_back_office_addActeur'));
     	}
     	
-    	return $this->render('MoviesBackOfficeBundle:Admin:addActeur.html.twig',array('form'=>$form->createView()));
+    	return $this->render('MoviesBackOfficeBundle:Admin:Add/addActeur.html.twig',array('form'=>$form->createView()));
     }
     
     public function addRealisateurAction(Request $request)
@@ -112,6 +112,6 @@ class AdminController extends Controller
     		return $this->redirect($this->generateUrl('movies_back_office_addRealisateur'));
     	}
     	
-    	return $this->render('MoviesBackOfficeBundle:Admin:addRealisateur.html.twig',array('form'=>$form->createView()));
+    	return $this->render('MoviesBackOfficeBundle:Admin:Add/addRealisateur.html.twig',array('form'=>$form->createView()));
     }
 }
