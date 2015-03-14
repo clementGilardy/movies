@@ -52,7 +52,7 @@ class SecurityController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($user);
 			$em->flush();
-		
+			$request->getSession()->getFlashBag()->add('notice', 'L\'utilisateur '.$user->getUsername().' à bien été enregistré !');
 			return $this->redirect($this->generateUrl('movies_moviesbundle_home'));
 		}
 		

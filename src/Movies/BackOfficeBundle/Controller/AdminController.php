@@ -55,7 +55,7 @@ class AdminController extends Controller
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($movie);
     		$em->flush();
-    		$request->getSession()->getFlashBag()->add('notice', 'Le film <strong>'.$movie->getTitre().'</strong> à bien été enregistré !');
+    		$request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().' à bien été enregistré !');
     		return $this->redirect($this->generateUrl('movies_back_office_addMovie'));
     	}
     	
@@ -83,7 +83,7 @@ class AdminController extends Controller
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($acteur);
     		$em->flush();
-    		$request->getSession()->getFlashBag()->add('notice', 'L\'acteur <strong>'.$acteur->getNomComplet().'</strong> à bien été enregistré !');
+    		$request->getSession()->getFlashBag()->add('notice', 'L\'acteur '.$acteur->getNomComplet().' à bien été enregistré !');
     		return $this->redirect($this->generateUrl('movies_back_office_addActeur'));
     	}
     	
