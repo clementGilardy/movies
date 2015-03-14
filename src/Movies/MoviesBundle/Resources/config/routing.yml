@@ -5,7 +5,3 @@ movies_moviesbundle_home:
 movies_moviesbundle_movies:
     path:   /movies
     defaults: {_controller: MoviesMoviesBundle:Movies:movies}
-
-movies_moviesbundle_series:
-    path:    /series
-    defaults: {_controller: MoviesMoviesBundle:Series:index}

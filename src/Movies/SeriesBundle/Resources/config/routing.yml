@@ -1,0 +1,3 @@
+movies_series_homepage:
+    path:     /series
+    defaults: { _controller: MoviesSeriesBundle:Series:index }

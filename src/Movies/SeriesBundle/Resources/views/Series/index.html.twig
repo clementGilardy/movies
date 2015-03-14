@@ -1,0 +1,10 @@
+{% extends "::layout.html.twig" %}
+
+{% block arianne %}
+	{{ parent() }}
+	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_series_homepage') }}">Séries</a>
+{% endblock %}
+
+{% block section %}
+<h1>Series</h1>
+{% endblock %}
