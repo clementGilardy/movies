@@ -1,6 +1,6 @@
 <?php
 
-namespace Movies\MoviesBundle\Entity;
+namespace Movies\SeriesBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

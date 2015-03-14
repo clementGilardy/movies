@@ -48,6 +48,7 @@ class Movies
      * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Commentaire")
      */
     private $commentaires;
+    
 
     /**
      * @var string
