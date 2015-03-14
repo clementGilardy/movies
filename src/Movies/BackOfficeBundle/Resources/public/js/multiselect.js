@@ -11,5 +11,4 @@ $(document).ready(function() {
 	$('#form_realisateur').select();
 	$('#form_image').bootstrapFileInput();
 	$('#form_file').bootstrapFileInput();
-	$('aside').css('left',($('form.form-horizontal').width()-250))
 });

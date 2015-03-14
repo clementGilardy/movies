@@ -3,16 +3,10 @@
 {%block stylesheets %}
     {{parent()}}
 <link rel="stylesheet" href="{{asset('bundles/moviesbackoffice/css/menu.css')}}"> 
-
+<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
 {%endblock%}
 
 {%block title%}{{parent()}} - Administration{%endblock%}
-
-{% block arianne %}
-	{{ parent() }}
-	<img height="15px" src="{{asset('images/arrow.png')}}"/> <a href="{{ path('movies_back_office_homepage') }}">Administration</a>
-{% endblock %}
-
 
 {% block aside %}
 	<div class="panel panel-danger">
@@ -26,7 +20,7 @@
 	</div>
 {% endblock %}
 
-{%block section%}
+{%block corps%}
 <h1>Administration</h1>
 
 {%endblock%}

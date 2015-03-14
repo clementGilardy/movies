@@ -2,7 +2,6 @@
 
 {%block stylesheets %}
     {{parent()}}
-<link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
 <link rel="stylesheet" href="{{asset('bundles/moviesbackoffice/css/admin.css')}}">  
 
 {%endblock%}
@@ -10,10 +9,10 @@
 {% block aside %}
 {% endblock %}
 
-{%block section%}
+{%block corps%}
 {{ parent() }}
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs admin">
 	<li role="presentation" class="gestion-users active"><a href="">Gestion des utilisateurs</a></li>
 	<li role="presentation" class="gestion-realisateur"><a href="">Gestion des réalisateurs</a></li>
 	<li role="presentation" class="gestion-acteurs"><a href="">Gestion des acteurs</a></li>

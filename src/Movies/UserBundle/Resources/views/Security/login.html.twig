@@ -1,14 +1,12 @@
-{% extends "::layout.html.twig" %}
+{% extends "MoviesUserBundle::layout.html.twig" %}
 
 {% block stylesheets %}
        {{ parent() }}
         <link rel="stylesheet" href="{{asset('bundles/moviesuser/form.css')}}">
+        <link rel="stylesheet" href="{{asset('bundles/moviesmovies/movies.css')}}">
 {% endblock %}
 
-{% block arianne %}
- {{ parent() }} <img height="15px" src="{{asset('images/arrow.png')}}"/> Connexion
-{% endblock %}
-{% block section %}
+{% block corps %}
 <h1>Connexion</h1>
   {# S'il y a une erreur, on l'affiche dans un joli cadre #}
   {% if error %}

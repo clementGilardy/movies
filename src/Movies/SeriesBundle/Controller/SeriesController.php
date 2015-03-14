@@ -8,6 +8,6 @@ class SeriesController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MoviesSeriesBundle:Series:index.html.twig');
+        return $this->render('MoviesSeriesBundle:Series:series.html.twig');
     }
 }

@@ -1,4 +1,8 @@
-section
+.container
 {
-	padding:5px;
+	margin-top:5px;
+	background:white;	
+	height:100%;
+	border: 1px solid white;
+	border-radius: 8px;
 }

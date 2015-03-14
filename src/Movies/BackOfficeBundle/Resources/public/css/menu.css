@@ -1,8 +1,9 @@
 aside
 {
-	position:absolute;
+	position:fixed;
 	width:250px;
+	right:150px;
 	top:150px;
-	z-index:1000;
+	z-index:2;
 }
 

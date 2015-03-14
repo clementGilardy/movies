@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var list = $('ul.nav li');
+	var list = $('ul.nav.nav-tabs.admin li');
 	
 	list.each(function(){
 		$(this).click(function(event){
