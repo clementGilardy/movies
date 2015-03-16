@@ -1,3 +1,7 @@
 /vendor/
 /app/cache/*
 /app/logs/*
+.buildpath
+.project
+composer.json
+composer.lock
