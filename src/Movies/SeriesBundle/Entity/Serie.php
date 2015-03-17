@@ -185,7 +185,7 @@ class Serie
     		return;
     	}
     	$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
-    	$this->image = $this->file->getClientOriginalName();
+    	$this->image = $this->getUploadDir().'/'.$this->file->getClientOriginalName();
     	$this->file = null;
     }
     

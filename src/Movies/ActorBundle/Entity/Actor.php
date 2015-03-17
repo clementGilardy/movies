@@ -1,17 +1,18 @@
 <?php
 
-namespace Movies\MoviesBundle\Entity;
+namespace Movies\ActorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Acteurs
+ * Actor
+ *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Movies\MoviesBundle\Entity\ActeurRepository")
+ * @ORM\Entity(repositoryClass="Movies\ActorBundle\Entity\ActorRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Acteur
+class Actor
 {
     /**
      * @var integer
@@ -35,7 +36,7 @@ class Acteur
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
-    
+
     /**
      * @Assert\File(maxSize="1M")
      */
@@ -44,22 +45,24 @@ class Acteur
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="text", nullable=true)
+     * @ORM\Column(name="image", type="text")
      */
     private $image;
-    
+
     /**
      * @var string
-     *  @ORM\Column(name="nomComplet", type="string", length=255)
+     *
+     * @ORM\Column(name="nomComplet", type="string", length=255)
      */
     private $nomComplet;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="biographie", type="text", nullable=true)
+     * @ORM\Column(name="biographie", type="text")
      */
     private $biographie;
+
 
     /**
      * Get id
@@ -75,7 +78,7 @@ class Acteur
      * Set nom
      *
      * @param string $nom
-     * @return Acteur
+     * @return Actor
      */
     public function setNom($nom)
     {
@@ -98,7 +101,7 @@ class Acteur
      * Set prenom
      *
      * @param string $prenom
-     * @return Acteur
+     * @return Actor
      */
     public function setPrenom($prenom)
     {
@@ -118,33 +121,33 @@ class Acteur
     }
 
     /**
-     * Set biographie
+     * Set image
      *
-     * @param string $biographie
-     * @return Acteur
+     * @param string $image
+     * @return Actor
      */
-    public function setBiographie($biographie)
+    public function setImage($image)
     {
-        $this->biographie = $biographie;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get biographie
+     * Get image
      *
      * @return string 
      */
-    public function getBiographie()
+    public function getImage()
     {
-        return $this->biographie;
+        return $this->image;
     }
 
     /**
      * Set nomComplet
      *
      * @param string $nomComplet
-     * @return Acteur
+     * @return Actor
      */
     public function setNomComplet($nomComplet)
     {
@@ -164,18 +167,28 @@ class Acteur
     }
 
     /**
-     * Set image
+     * Set biographie
      *
-     * @param string $image
-     * @return Acteur
+     * @param string $biographie
+     * @return Actor
      */
-    public function setImage($image)
+    public function setBiographie($biographie)
     {
-        $this->image = $image;
+        $this->biographie = $biographie;
 
         return $this;
     }
-    
+
+    /**
+     * Get biographie
+     *
+     * @return string 
+     */
+    public function getBiographie()
+    {
+        return $this->biographie;
+    }
+
     public function getFile()
     {
     	return $this->file;
@@ -187,16 +200,6 @@ class Acteur
     	return $this;
     }
 
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-    
     public function getUploadRootDir()
     {
     	return __DIR__.'/../../../../web/'.$this->getUploadDir();
@@ -241,8 +244,9 @@ class Acteur
     	
     	$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
     	
-    	$this->image = $this->file->getClientOriginalName();
+    	$this->image = $this->getUploadDir().'/'.$this->file->getClientOriginalName();
     	
     	$this->file = null;
     }
+
 }

@@ -13,7 +13,7 @@ class SecurityController extends Controller
 	{
 		// Si le visiteur est déjà identifié, on le redirige vers l'accueil
 		if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-			return $this->redirect($this->generateUrl('movies_moviesbundle_home'));
+			return $this->redirect($this->generateUrl('movies_home_homepage'));
 		}
 
 		$session = $request->getSession();
@@ -37,7 +37,7 @@ class SecurityController extends Controller
 	{
 		
 		$user = new User();
-		$user->setRoles(array('ROLE_USER'));
+		$user->setRoles(array('ROLE_ADMIN'));
 		$form = $this->get('form.factory')->createBuilder('form',$user)
 		->add('username','text')
 		->add('password','password')
@@ -53,7 +53,7 @@ class SecurityController extends Controller
 			$em->persist($user);
 			$em->flush();
 			$request->getSession()->getFlashBag()->add('notice', 'L\'utilisateur '.$user->getUsername().' à bien été enregistré !');
-			return $this->redirect($this->generateUrl('movies_moviesbundle_home'));
+			return $this->redirect($this->generateUrl('movies_home_homepage'));
 		}
 		
 		return $this->render('MoviesUserBundle:Security:signup.html.twig',array('form'=>$form->createView()));

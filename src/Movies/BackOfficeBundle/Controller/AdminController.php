@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Movies\MoviesBundle\Entity\Movies;
-use Movies\MoviesBundle\Entity\Acteur;
+use Movies\ActorBundle\Entity\Actor;
 use Movies\MoviesBundle\Entity\Realisateur;
 use Movies\MoviesBundle\Entity\Movies\MoviesBundle\Entity;
 
@@ -30,7 +30,7 @@ class AdminController extends Controller
     	))
     	->add('duration','integer')
     	->add('acteurs','entity', array(
-    			'class'=>'MoviesMoviesBundle:Acteur',
+    			'class'=>'MoviesActorBundle:Actor',
     			'property'=>'nomComplet','expanded'=>false,
     			'multiple'=>true, 'label'=>true
     	))
@@ -65,7 +65,7 @@ class AdminController extends Controller
     
     public function addActeurAction(Request $request)
     {
-    	$acteur = new Acteur();
+    	$acteur = new Actor();
     	
     	$form = $this->get('form.factory')->createBuilder('form',$acteur)
     	->add('nom','text')

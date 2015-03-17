@@ -42,7 +42,18 @@
 {% endblock %}
 
 {% block corps %}
- <div class="row">
+	{% for msg in app.session.flashbag.get('notice') %}
+		{% if msg is not empty %}
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+				</button>
+				{{ msg }}
+			</div>
+		{% endif %}
+	{% endfor %}
+
+ 		<div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
                     À l'affiche
