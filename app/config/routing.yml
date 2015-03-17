@@ -1,3 +1,7 @@
+movies_home:
+    resource: "@MoviesHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 movies_series:
     resource: "@MoviesSeriesBundle/Resources/config/routing.yml"
     prefix:   /

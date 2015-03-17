@@ -1,7 +1,3 @@
-movies_moviesbundle_home:
-    path:   /
-    defaults: {_controller: MoviesMoviesBundle:Movies:index}
-
 movies_moviesbundle_movies:
     path:   /movies
-    defaults: {_controller: MoviesMoviesBundle:Movies:movies}
+    defaults: { _controller: MoviesMoviesBundle:Movies:movies }
