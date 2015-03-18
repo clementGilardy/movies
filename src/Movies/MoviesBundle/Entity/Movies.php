@@ -33,7 +33,7 @@ class Movies
 
    /**
     * 
-    * @ORM\ManyToMany(targetEntity="Movies\MoviesBundle\Entity\Acteur")
+    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
     */
     private $acteurs;
     
