@@ -1,0 +1,11 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{asset('css/container.css')}}">
+{% endblock %}
+
+{%block title%}{{parent()}} - Acteurs{%endblock%}
+
+{%block corps%}
+
+{%endblock%}

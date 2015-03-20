@@ -31,17 +31,17 @@ class Movies
      */
     private $titre;
 
+   /**
+    * 
+    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
+    */
+    private $acteurs;
+
     /**
      *
      * @ORM\ManyToMany(targetEntity="Movies\MoviesBundle\Entity\Genre")
      */
     private $genres;
-
-    /**
-     * 
-     * @ORM\OneToMany(targetEntity="Movies\ActorBundle\Entity\ActorRoleMovie",mappedBy="movies")
-     */
-    private $actorRoleMovie;
 
     /**
      * 
