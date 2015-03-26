@@ -3,13 +3,17 @@ movies_back_office_homepage:
     defaults: { _controller: MoviesBackOfficeBundle:Admin:index }
 
 movies_back_office_addMovies:
-    path:   /ajouter-un-film
+    path:   /admin/ajouter-un-film
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addMovie }
     
 movies_back_office_addActeur:
-    path: /ajouter-un-acteur
+    path: /admin/ajouter-un-acteur
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addActeur }
 
 movies_back_office_addRealisateur:
-    path: /ajouter-un-realisateur
+    path: /admin/ajouter-un-realisateur
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addRealisateur }
+
+movies_back_office_addGenre:
+    path: /admin/ajouter-un-genre
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:addGenre }

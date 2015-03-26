@@ -27,7 +27,7 @@ class Movies
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="titre", type="string", length=255, unique=true)
      */
     private $titre;
 
@@ -39,16 +39,16 @@ class Movies
 
     /**
      * 
-     * @ORM\OneToMany(targetEntity="Movies\ActorBundle\Entity\ActorRoleMovie",mappedBy="movies")
-     */
-    private $actorRoleMovie;
-
-    /**
-     * 
      * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Commentaire")
      */
     private $commentaires;
     
+    /**
+    *
+    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
+    *
+    */
+    private $acteurs;
 
     /**
      * @var string
@@ -78,7 +78,7 @@ class Movies
     
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Realisateur")
+     * @ORM\ManyToOne(targetEntity="Movies\ActorBundle\Entity\Actor")
      */
     private $realisateur;
     
@@ -100,7 +100,7 @@ class Movies
 
     public function __construct()
     {
-
+        $actors = new ArrayCollection();
     }
 
     /**
@@ -112,18 +112,6 @@ class Movies
     {
         return $this->id;
     }
-    
-    public function addActeur(Acteur $acteur)
-    {
-    	$this->acteur[] = $acteur;
-    	return $this;
-    }
-    
-    public function removeActeur(Acteur $acteur)
-    {
-    	$this->acteur->removeElement($acteur);
-    }
-
     /**
      * Set titre
      *
@@ -147,30 +135,7 @@ class Movies
         return $this->titre;
     }
 
-    /**
-     * Set acteur
-     *
-     * @param array $acteur
-     * @return Movies
-     */
-    public function setActeurs($acteur)
-    {
-        $this->acteurs = $acteur;
-
-        return $this;
-    }
-
-    /**
-     * Get acteur
-     *
-     * @return array 
-     */
-    public function getActeurs()
-    {
-        return $this->acteurs;
-    }
-
-    /**
+        /**
      * Set commentaires
      *
      * @param array $commentaires
@@ -397,7 +362,7 @@ class Movies
      * @param \Movies\MoviesBundle\Entity\Realisateur $realisateur
      * @return Movies
      */
-    public function setRealisateur(\Movies\MoviesBundle\Entity\Realisateur $realisateur = null)
+    public function setRealisateur(\Movies\ActorBundle\Entity\Actor $realisateur = null)
     {
         $this->realisateur = $realisateur;
 
@@ -407,10 +372,44 @@ class Movies
     /**
      * Get realisateur
      *
-     * @return \Movies\MoviesBundle\Entity\Realisateur 
+     * @return \Movies\ActorBundle\Entity\Actor
      */
     public function getRealisateur()
     {
         return $this->realisateur;
+    }
+
+
+    /**
+     * Add acteurs
+     *
+     * @param \Movies\ActorBundle\Entity\Actor $acteurs
+     * @return Movies
+     */
+    public function addActeur(\Movies\ActorBundle\Entity\Actor $acteurs)
+    {
+        $this->acteurs[] = $acteurs;
+
+        return $this;
+    }
+
+    /**
+     * Remove acteurs
+     *
+     * @param \Movies\ActorBundle\Entity\Actor $acteurs
+     */
+    public function removeActeur(\Movies\ActorBundle\Entity\Actor $acteurs)
+    {
+        $this->acteurs->removeElement($acteurs);
+    }
+
+    /**
+     * Get acteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActeurs()
+    {
+        return $this->acteurs;
     }
 }

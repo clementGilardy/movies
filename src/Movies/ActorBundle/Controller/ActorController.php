@@ -8,6 +8,9 @@ class ActorController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MoviesActorBundle:Actor:actor.html.twig');
+        $repository = $this->getDoctrine()->getManager()->getRepository('MoviesActorBundle:Actor');
+        $listActeurs = $repository->findAll();
+        return $this->render('MoviesActorBundle:Actor:actor.html.twig',
+        array('acteurs'=>$listActeurs));
     }
 }

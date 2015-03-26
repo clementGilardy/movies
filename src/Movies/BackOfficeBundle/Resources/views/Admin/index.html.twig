@@ -14,21 +14,15 @@
 
 <ul class="nav nav-tabs admin">
 	<li role="presentation" class="gestion-users active"><a href="">Gestion des utilisateurs</a></li>
-	<li role="presentation" class="gestion-realisateur"><a href="">Gestion des réalisateurs</a></li>
 	<li role="presentation" class="gestion-acteurs"><a href="">Gestion des acteurs</a></li>
 	<li role="presentation" class="gestion-films"><a href="">Gestion des films</a></li>
 	<li role="presentation" class="gestion-series"><a href="">Gestion des Séries</a></li>
+	<li role="presentation" class="gestion-genres"><a href="">Gestion des Genres</a></li>
 </ul>
 
 <div class="gestion-users list-group">
 	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Modifier un utilisateur</a>
 	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Supprimer un utilisateur</a>
-</div>
-
-
-<div class="gestion-realisateur list-group">
-	<a href="{{ path('movies_back_office_addRealisateur') }}" class="list-group-item">Ajouter un réalisateur</a>
-	
 </div>
 
 <div class="gestion-acteurs list-group">
@@ -46,6 +40,11 @@
 	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Ajouter une série</a>
 	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Modifier une série</a>
 	<a href="{{ path('movies_back_office_addMovies') }}" class="list-group-item">Supprimer une série</a>
+</div>
+
+<div class="gestion-genres list-group">
+    <a href="{{ path('movies_back_office_addGenre') }}" class="list-group-item" >Ajouter un genre</a>
+    <a class="list-group-item" href="{{path('movies_moviesbundle_listGenre')}}">Liste des genres</a>
 </div>
 
 {%endblock%}

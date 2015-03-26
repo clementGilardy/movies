@@ -40,6 +40,17 @@
       		{{ form_widget(form.realisateur,{'attr': {'class': 'selectpicker', 'data-live-search':'true', 'title':'Selectionner le réalisateur'}}) }}
       	</div>
     </div>
+
+     <div class="form-group">
+      {# Génération du label. #}
+      	{{ form_label(form.acteurs, "Acteurs",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      	{{ form_errors(form.realisateur) }}
+	 	<div class="col-sm-3">
+      		{{ form_widget(form.acteurs) }}
+      	</div>
+    </div>
     
     <div class="form-group">
       {# Génération du label. #}       
@@ -53,18 +64,7 @@
 			    </div>
 	      	</div>
     </div>
-	
-	<div class="form-group">
-      {# Génération du label. #}
-      	{{ form_label(form.acteurs, "Acteurs",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
-      {# Affichage des erreurs pour ce champ précis. #}
-    	  {{ form_errors(form.acteurs) }}
-		<div class="col-sm-3">
-      		{{ form_widget(form.acteurs) }}
-      	</div>
-    </div>
-    
     <div class="form-group">
       {# Génération du label. #}
       	{{ form_label(form.genres, "Genres",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
@@ -108,16 +108,17 @@
       		{{ form_widget(form.file, {'attr' : {'title' : 'Parcourir...'}}) }}
       	</div>
     </div>
-    <div class="form-group">	
-    	<div class="col-sm-offset-2 col-sm-10">
-    		{{ form_widget(form.Ajouter,{'attr' : {'class' : 'btn btn-default'}}) }}
-    	</div>
+    <div class="form-group">
+       	<div class="col-sm-3 col-md-offset-2">
+      		{{ form_widget(form.Ajouter, {'attr' : {'class' : 'btn btn-default'}}) }}
+      	</div>
     </div>
- {{ form_end(form) }}
+{{ form_end(form) }}
  
 {%endblock%}
 
 {% block javascripts %}
 {{ parent() }}
     <script src="{{ asset('bundles/moviesbackoffice/js/multiselect.js') }}"></script>
+    <script src="{{ asset('bundles/moviesbackoffice/js/addRole.js') }}"></script>
 {% endblock %}

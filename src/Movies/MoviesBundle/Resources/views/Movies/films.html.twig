@@ -1,11 +1,17 @@
 {% extends "MoviesMoviesBundle::layout.html.twig" %}
-
 {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" href="{{asset('css/container.css')}}">
+        <link rel="stylesheet" href="{{asset('bundles/moviesmovies/css/films.css')}}">
 {% endblock %}
 
 {% block corps %}
 <h1>Les films</h1>
-
+<div class="all-movies">
+    {% for movie in movies %}
+        <div class="display-movie">
+           <h3> {{movie.titre}}</h3>
+            <img  src="{{ asset(movie.image) }}" alt="{{movie.titre}}">
+        </div>
+    {%endfor%}
+</div>
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends "MoviesBackOfficeBundle::layout.html.twig" %}
+
+{%block title%}{{parent()}} - liste des genres{%endblock%}
+
+{%block corps%}
+
+	{% for msg in app.session.flashbag.get('notice') %}
+		{% if msg is not empty %}
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+				</button>
+				{{ msg }}
+			</div>
+		{% endif %}
+	{% endfor %}
+
+<h1>Liste des genres</h1>
+
+<ul>
+{% for genre in genres %}
+    <li>{{genre.nom}}</li>
+{%endfor %}
+</ul>
+
+{%endblock%}

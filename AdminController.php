@@ -29,12 +29,7 @@ class AdminController extends Controller
     			'multiple'=>false, 'label'=>true
     	))
     	->add('duration','integer')
-    	->add('acteurs','entity', array(
-    			'class'=>'MoviesActorBundle:Actor',
-    			'property'=>'nomComplet','expanded'=>false,
-    			'multiple'=>true, 'label'=>true
-    	))
-    	->add('genres','entity',array(
+       	->add('genres','entity',array(
     			'class'=>'MoviesMoviesBundle:Genre',
     			'property'=>'nom','expanded'=>false,
     			'multiple'=>true, 'label'=>true

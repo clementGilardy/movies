@@ -29,14 +29,6 @@ class Genre
     private $nom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
-
-
-    /**
      * Get id
      *
      * @return integer 

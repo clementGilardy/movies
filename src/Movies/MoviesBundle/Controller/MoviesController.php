@@ -11,6 +11,19 @@ class MoviesController extends Controller
 {
     public function moviesAction(Request $request)
     {	
-        return $this->render('MoviesMoviesBundle:Movies:films.html.twig'); 
+        $repo = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
+        $listMovies = $repo->findAll();
+        return $this->render('MoviesMoviesBundle:Movies:films.html.twig',
+        array('movies'=>$listMovies)); 
     }
+
+    public function listGenreAction(Request $request)
+    {
+       $repository = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Genre'); 
+       $listGenre = $repository->findAll();
+    	return
+        $this->render('MoviesMoviesBundle:Genre:listGenre.html.twig',array('genres'=>$listGenre));
+    }
+
+
 }

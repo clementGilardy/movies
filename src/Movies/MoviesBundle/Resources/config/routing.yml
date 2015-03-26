@@ -1,3 +1,7 @@
 movies_moviesbundle_movies:
     path:   /movies
     defaults: { _controller: MoviesMoviesBundle:Movies:movies }
+
+movies_moviesbundle_listGenre:
+    path: /liste-genre
+    defaults: { _controller: MoviesMoviesBundle:Movies:listGenre}

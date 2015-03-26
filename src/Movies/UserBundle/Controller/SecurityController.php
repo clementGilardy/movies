@@ -39,6 +39,8 @@ class SecurityController extends Controller
 		$user = new User();
 		$user->setRoles(array('ROLE_USER'));
 		$form = $this->get('form.factory')->createBuilder('form',$user)
+        ->add('nom','text')
+        ->add('prenom','text')
 		->add('username','text')
 		->add('password','password')
 		->add('email','email')

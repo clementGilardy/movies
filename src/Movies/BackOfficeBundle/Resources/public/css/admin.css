@@ -1,7 +1,8 @@
 div.gestion-films.list-group,
 div.gestion-series.list-group,
 div.gestion-realisateur.list-group,
-div.gestion-acteurs.list-group
+div.gestion-acteurs.list-group,
+div.gestion-genres.list-group
 {
 	display: none;
 }

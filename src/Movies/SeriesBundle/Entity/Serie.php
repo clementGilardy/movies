@@ -35,6 +35,14 @@ class Serie
      * @ORM\Column(name="statut", type="string", length=255)
      */
     private $statut;
+
+    /**
+    *
+    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
+    *
+    */
+    private $acteurs;
+
     
     /**
      * @Assert\File(maxSize="1M")
@@ -47,12 +55,6 @@ class Serie
      * @ORM\Column(name="duration", type="integer")
      */
     private $duration;
-    
-    /**
-     *
-     * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
-     */
-    private $acteurs;
     
     /**
      *
@@ -81,7 +83,7 @@ class Serie
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Movies\MoviesBundle\Entity\Realisateur")
+     * @ORM\ManyToOne(targetEntity="Movies\ActorBundle\Entity\Actor")
      */
     private $realisateur;
     
@@ -203,8 +205,6 @@ class Serie
      */
     public function __construct()
     {
-        $this->acteurs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->genres = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -251,39 +251,6 @@ class Serie
     public function getImage()
     {
         return $this->image;
-    }
-
-    /**
-     * Add acteurs
-     *
-     * @param \Movies\MoviesBundle\Entity\Acteur $acteurs
-     * @return Serie
-     */
-    public function addActeur(\Movies\MoviesBundle\Entity\Acteur $acteurs)
-    {
-        $this->acteurs[] = $acteurs;
-
-        return $this;
-    }
-
-    /**
-     * Remove acteurs
-     *
-     * @param \Movies\MoviesBundle\Entity\Acteur $acteurs
-     */
-    public function removeActeur(\Movies\MoviesBundle\Entity\Acteur $acteurs)
-    {
-        $this->acteurs->removeElement($acteurs);
-    }
-
-    /**
-     * Get acteurs
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getActeurs()
-    {
-        return $this->acteurs;
     }
 
     /**

@@ -1,6 +1,31 @@
 {% extends "MoviesActorBundle::layout.html.twig" %}
 
 {% block corps %}
-    <h1>Acteurs</h1>
+    <h1>Liste des acteurs</h1>
+
+    <table class="table table-striped table-condensed">
+        <tr>
+            <th class="text-center">Photo</th>
+            <th class="text-center">Nom de scène</th>
+            <th class="text-center">Biographie</th>
+            <th class="text-center">Films</th>
+        </tr>
+    {% for acteur in acteurs%}
+        <tr>
+            <td><img  height="150px" src="{{asset(acteur.image)}}" alt="{{acteur.nomComplet}}"></td>
+            <td>{{acteur.nomComplet}}</td>
+            <td>
+                {% if acteur.biographie is empty %}
+                    <p>Aucune biographie n'à été faite pour cet(te) acteur/actrice pour le moment !</p>
+                {% else %}
+                    {{acteur.biographie}}
+                {% endif %}
+            </td>
+            <td><a href="">Films joué</a></td>
+        </tr>
+
+    {% endfor %}
+    
+    </table>
 {% endblock %}
 

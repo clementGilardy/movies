@@ -31,12 +31,6 @@ class Movies
      */
     private $titre;
 
-   /**
-    * 
-    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
-    */
-    private $acteurs;
-
     /**
      *
      * @ORM\ManyToMany(targetEntity="Movies\MoviesBundle\Entity\Genre")
@@ -49,6 +43,12 @@ class Movies
      */
     private $commentaires;
     
+    /**
+    *
+    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
+    *
+    */
+    private $acteurs;
 
     /**
      * @var string
@@ -100,7 +100,7 @@ class Movies
 
     public function __construct()
     {
-
+        $actors = new ArrayCollection();
     }
 
     /**
@@ -112,18 +112,6 @@ class Movies
     {
         return $this->id;
     }
-    
-    public function addActeur(Acteur $acteur)
-    {
-    	$this->acteur[] = $acteur;
-    	return $this;
-    }
-    
-    public function removeActeur(Acteur $acteur)
-    {
-    	$this->acteur->removeElement($acteur);
-    }
-
     /**
      * Set titre
      *
@@ -147,30 +135,7 @@ class Movies
         return $this->titre;
     }
 
-    /**
-     * Set acteur
-     *
-     * @param array $acteur
-     * @return Movies
-     */
-    public function setActeurs($acteur)
-    {
-        $this->acteurs = $acteur;
-
-        return $this;
-    }
-
-    /**
-     * Get acteur
-     *
-     * @return array 
-     */
-    public function getActeurs()
-    {
-        return $this->acteurs;
-    }
-
-    /**
+        /**
      * Set commentaires
      *
      * @param array $commentaires
@@ -413,4 +378,5 @@ class Movies
     {
         return $this->realisateur;
     }
+
 }

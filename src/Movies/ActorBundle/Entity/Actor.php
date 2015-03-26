@@ -3,6 +3,7 @@
 namespace Movies\ActorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -38,12 +39,6 @@ class Actor
     private $prenom;
 
     /**
-     * 
-     * @ORM\OneToMany(targetEntity="Movies\ActorBundle\Entity\ActorRoleMovie",mappedBy="actors")
-     */
-    private $actorRoleMovie;
-
-    /**
      * @Assert\File(maxSize="1M")
      */
     private $file;
@@ -65,10 +60,9 @@ class Actor
     /**
      * @var string
      *
-     * @ORM\Column(name="biographie", type="text")
+     * @ORM\Column(name="biographie", type="text", nullable=true)
      */
     private $biographie;
-
 
     /**
      * Get id
@@ -260,39 +254,5 @@ class Actor
      */
     public function __construct()
     {
-        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add roles
-     *
-     * @param \Movies\ActorBundle\Entity\Role $roles
-     * @return Actor
-     */
-    public function addRole(\Movies\ActorBundle\Entity\Role $roles)
-    {
-        $this->roles[] = $roles;
-
-        return $this;
-    }
-
-    /**
-     * Remove roles
-     *
-     * @param \Movies\ActorBundle\Entity\Role $roles
-     */
-    public function removeRole(\Movies\ActorBundle\Entity\Role $roles)
-    {
-        $this->roles->removeElement($roles);
-    }
-
-    /**
-     * Get roles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRoles()
-    {
-        return $this->roles;
     }
 }

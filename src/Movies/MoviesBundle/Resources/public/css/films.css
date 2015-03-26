@@ -1,0 +1,12 @@
+.display-movie
+{
+    display: inline-block;
+    text-align:center;
+}
+
+.all-movies
+{
+    padding:5px;
+    width:100%;
+    border:1px solid block;
+}
