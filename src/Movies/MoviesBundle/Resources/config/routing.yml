@@ -3,5 +3,11 @@ movies_moviesbundle_movies:
     defaults: { _controller: MoviesMoviesBundle:Movies:movies }
 
 movies_moviesbundle_listGenre:
-    path: /liste-genre
-    defaults: { _controller: MoviesMoviesBundle:Movies:listGenre}
+    path: /list-genre
+    defaults: { _controller: MoviesMoviesBundle:Movies:listGenre }
+
+movies_moviesbundle_showMovie:
+    path: /show-movie/{id}
+    defaults: { _controller: MoviesMoviesBundle:Movies:showMovie }
+    requirements:
+        id: \d

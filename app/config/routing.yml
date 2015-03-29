@@ -22,7 +22,7 @@ login:
     pattern:    /login
     defaults:   { _controller: MoviesUserBundle:Security:login }
 
-signin:
+signup:
     pattern:    /signup
     defaults:   { _controller: MoviesUserBundle:Security:signup }
 
@@ -31,3 +31,9 @@ login_check:
 
 logout:
     pattern:   /logout
+
+profil:
+    pattern: /profil/{id}
+    defaults: { _controller: MoviesUserBundle:Security:showProfil }
+    requirements:
+        id: \d

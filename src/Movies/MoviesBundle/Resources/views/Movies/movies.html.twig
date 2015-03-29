@@ -1,0 +1,25 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{asset('bundles/moviesmovies/css/films.css')}}">
+{% endblock %}
+{% block carousel %}
+    <!-- Header Carousel -->
+    <header id="myCarousel" class="carousel slide">
+
+    </header>
+{%endblock%}
+
+{% block corps %}
+    <div class="row">
+        <h1>Les films</h1>
+        <div class="all-movies">
+            {% for movie in movies %}
+                <div class="display-movie">
+                    <h3><a href="{{ path('movies_moviesbundle_showMovie', {'id':movie.id})}}">{{movie.titre}}</a></h3>
+                    <img  src="{{ asset(movie.image) }}" alt="{{movie.titre}}">
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+{% endblock %}

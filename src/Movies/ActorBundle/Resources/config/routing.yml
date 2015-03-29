@@ -1,3 +1,9 @@
 movies_actor_homepage:
     path:     /actor
     defaults: { _controller: MoviesActorBundle:Actor:index }
+
+movies_actor_showActor:
+    path: /show-actor/{id}
+    defaults: { _controller: MoviesActorBundle:Actor:showActor }
+    requirements: 
+        id: \d

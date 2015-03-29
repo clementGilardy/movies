@@ -13,7 +13,7 @@
     {% for acteur in acteurs%}
         <tr>
             <td><img  height="150px" src="{{asset(acteur.image)}}" alt="{{acteur.nomComplet}}"></td>
-            <td>{{acteur.nomComplet}}</td>
+            <td><a href="{{ path('movies_actor_showActor', {'id': acteur.id})}}">{{acteur.nomComplet}}</a></td>
             <td>
                 {% if acteur.biographie is empty %}
                     <p>Aucune biographie n'à été faite pour cet(te) acteur/actrice pour le moment !</p>

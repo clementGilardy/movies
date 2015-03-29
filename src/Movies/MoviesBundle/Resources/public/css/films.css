@@ -10,3 +10,38 @@
     width:100%;
     border:1px solid block;
 }
+
+.actor
+{
+    display:inline-block;
+    text-align:center;
+    width: 150px;
+}
+
+.movie-details
+{
+    margin-top:10px;
+    position:realtive;
+    padding:0;
+    margin:0;
+}
+
+.movie-details img
+{
+    display:inline-block;
+    padding:0;
+    margin:0;
+}
+
+.details h4
+{
+    margin:0;
+    padding:0;
+}
+
+.details
+{
+    margin-left:10px;
+    width: 500px;
+    display:inline-block;
+}

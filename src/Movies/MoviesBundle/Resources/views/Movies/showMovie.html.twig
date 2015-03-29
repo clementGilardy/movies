@@ -1,0 +1,29 @@
+{% extends "MoviesMoviesBundle::layout.html.twig" %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{asset('bundles/moviesmovies/css/films.css')}}">
+{% endblock %}
+
+{% block corps %}
+    <h1>{{movie.titre}}</h1>
+
+    <div class="movie-details">
+        <img src="{{asset(movie.image)}}" alt="">
+
+        <div class="details">
+
+        <h4>Réalisateur</h4>
+        <a href="{{path('movies_actor_showActor', {'id': movie.realisateur.id})}}">{{movie.realisateur.nomComplet}}</a>
+</div>
+    </div>
+
+        <h4>Synopsys</h4>
+        <p>{{movie.synopsis}}</p>
+    <h2>Acteurs</h2>
+    {% for actor in movie.acteurs  %}
+        <div class="actor">
+            <h4><a href="{{path('movies_actor_showActor',{'id':actor.id})}}">{{actor.nomComplet}}</a></h4>
+            <img height="150px"  src="{{asset(actor.image)}}" alt=""/>
+        </div>
+    {% endfor %}
+{% endblock %}
