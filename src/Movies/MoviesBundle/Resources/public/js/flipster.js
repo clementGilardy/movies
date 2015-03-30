@@ -1,3 +1,4 @@
 $(document).ready(function() {
-    $(".coverflow").flipster();
+    $(".coverflow").flipster(
+    );
 });
