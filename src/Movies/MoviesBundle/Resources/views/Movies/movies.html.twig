@@ -9,33 +9,11 @@
     <header class="carousel">
         <div class="coverflow">
             <ul>
+            {% for movie in movies %}
                 <li>
-                    <div><img src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
+                    <div><img src="{{asset(movie.image)}}" alt="{{movie.titre}}"></div>
                 </li>
-                <li>
-                    <div><img
-                    src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
-                </li>
-                <li>
-                    <div><img
-                    src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
-                </li>
-                <li>
-                    <div><img
-                    src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
-                </li>
-                <li>
-                    <div><img
-                    src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
-                </li>
-                <li>
-                    <div><img
-                    src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
-                </li>
-                <li>
-                    <div><img
-                    src="{{asset('uploads/poster/18876909.jpg-r_160_240-b_1_D6D6D6-f_jpg-q_x-xxyxx.jpg')}}" alt=""></div>
-                </li>
+            {%endfor%}
             </ul>
         </div>
     </header>

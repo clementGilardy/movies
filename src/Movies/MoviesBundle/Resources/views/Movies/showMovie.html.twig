@@ -12,18 +12,19 @@
 
         <div class="details">
 
-        <h4>Réalisateur</h4>
+        Réalisateur :
         <a href="{{path('movies_actor_showActor', {'id': movie.realisateur.id})}}">{{movie.realisateur.nomComplet}}</a>
 </div>
     </div>
 
-        <h4>Synopsys</h4>
+        <h2>Synopsys</h2>
         <p>{{movie.synopsis}}</p>
     <h2>Acteurs</h2>
     {% for actor in movie.acteurs  %}
         <div class="actor">
-            <h4><a href="{{path('movies_actor_showActor',{'id':actor.id})}}">{{actor.nomComplet}}</a></h4>
             <img height="150px"  src="{{asset(actor.image)}}" alt=""/>
+            <span class="titre"><a
+            href="{{path('movies_actor_showActor',{'id':actor.id})}}">{{actor.nomComplet}}</a></span>
         </div>
     {% endfor %}
 {% endblock %}

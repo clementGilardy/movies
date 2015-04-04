@@ -45,3 +45,8 @@
     width: 500px;
     display:inline-block;
 }
+
+span.titre
+{
+    display: inline-block;
+}
