@@ -10,11 +10,10 @@
     <div class="movie-details">
         <img src="{{asset(movie.image)}}" alt="">
 
-        <div class="details">
-
+    </div>
+    <div class="details">
         Réalisateur :
         <a href="{{path('movies_actor_showActor', {'id': movie.realisateur.id})}}">{{movie.realisateur.nomComplet}}</a>
-</div>
     </div>
 
         <h2>Synopsys</h2>

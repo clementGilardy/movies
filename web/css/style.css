@@ -72,6 +72,11 @@ header.carousel .fill {
     border: 10px;
     border-radius: 8px;
 }
+
+.row h1
+{
+    margin-left: 10px;
+}
 /* Responsive */
 
 @media(max-width:991px) {
