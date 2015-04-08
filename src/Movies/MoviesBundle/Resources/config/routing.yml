@@ -10,4 +10,4 @@ movies_moviesbundle_showMovie:
     path: /show-movie/{id}
     defaults: { _controller: MoviesMoviesBundle:Movies:showMovie }
     requirements:
-        id: \d
+        id: \d.*

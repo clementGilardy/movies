@@ -12,18 +12,36 @@
 
     </div>
     <div class="details">
+        Sortie : {{movie.dateRelease | localizeddate('full','none',"fr") }}<br>
         Réalisateur :
         <a href="{{path('movies_actor_showActor', {'id': movie.realisateur.id})}}">{{movie.realisateur.nomComplet}}</a>
+        <br>
+        Avec : 
+        {% for key,actor in movie.acteurs if key < 3 %}
+           <a href="{{path('movies_actor_showActor',{'id':actor.id})}}"> {{ actor.nomComplet }}</a>{% if key != 2 %},{%endif%}
+        {% endfor %}
+        <br>
+        Genre :
+        {% for key,genre in movie.genres  %}
+            {{genre.nom}}{% if key != loop.length-1 %},{%endif%}
+        {% endfor %}
     </div>
 
         <h2>Synopsys</h2>
         <p>{{movie.synopsis}}</p>
     <h2>Acteurs</h2>
-    {% for actor in movie.acteurs  %}
+    {% for key,actor in movie.acteurs if key <6  %}
         <div class="actor">
             <img height="150px"  src="{{asset(actor.image)}}" alt=""/>
             <span class="titre"><a
             href="{{path('movies_actor_showActor',{'id':actor.id})}}">{{actor.nomComplet}}</a></span>
         </div>
     {% endfor %}
+    <table class="table table-striped table-bordered table-hover">
+        {% for key,actor in movie.acteurs if key >= 6%}
+            <tr>
+                <td><a href="{{path('movies_actor_showActor',{'id':actor.id})}}">{{actor.nomComplet}}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

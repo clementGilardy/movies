@@ -53,7 +53,7 @@ class Actor
     /**
      * @var string
      *
-     * @ORM\Column(name="nomComplet", type="string", length=255)
+     * @ORM\Column(name="nomComplet", type="string", length=255, unique=true)
      */
     private $nomComplet;
 
