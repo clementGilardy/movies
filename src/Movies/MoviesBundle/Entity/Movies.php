@@ -44,13 +44,6 @@ class Movies
     private $commentaires;
     
     /**
-    *
-    * @ORM\ManyToMany(targetEntity="Movies\ActorBundle\Entity\Actor")
-    *
-    */
-    private $acteurs;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="synopsis", type="text")

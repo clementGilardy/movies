@@ -41,17 +41,6 @@
       	</div>
     </div>
 
-     <div class="form-group">
-      {# Génération du label. #}
-      	{{ form_label(form.acteurs, "Acteurs",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-      {# Affichage des erreurs pour ce champ précis. #}
-      	{{ form_errors(form.realisateur) }}
-	 	<div class="col-sm-3">
-      		{{ form_widget(form.acteurs) }}
-      	</div>
-    </div>
-    
     <div class="form-group">
       {# Génération du label. #}       
 	  {{ form_label(form.duration, "Durée",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}

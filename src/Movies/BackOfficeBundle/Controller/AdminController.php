@@ -58,12 +58,7 @@ class AdminController extends Controller
     			'property'=>'nom','expanded'=>false,
     			'multiple'=>true, 'label'=>true
     	))
-        ->add('acteurs','entity',array(
-                'class'=>'MoviesActorBundle:Actor',
-                'property'=>'nomComplet','expanded'=>false,
-                'multiple'=>true, 'label'=>true
-        ))
-    	->add('synopsis','textarea')
+       	->add('synopsis','textarea')
     	->add('dateRelease','date',array(
     			'format'=> 'yyyy-MM-dd',
     			'widget'=> 'single_text',
@@ -112,5 +107,10 @@ class AdminController extends Controller
     	}
     	
     	return $this->render('MoviesBackOfficeBundle:Admin:Actor/addActeur.html.twig',array('form'=>$form->createView()));
+    }
+
+    public function addRoleAction(Request $request)
+    {
+    	return $this->render('MoviesBackOfficeBundle:Admin:Movie/addRole.html.twig');
     }
 }

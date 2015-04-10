@@ -18,6 +18,7 @@
 	<li role="presentation" class="gestion-films"><a href="">Gestion des films</a></li>
 	<li role="presentation" class="gestion-series"><a href="">Gestion des Séries</a></li>
 	<li role="presentation" class="gestion-genres"><a href="">Gestion des Genres</a></li>
+	<li role="presentation" class="gestion-relations"><a href="">Gestion des Relations</a></li>
 </ul>
 
 <div class="gestion-users list-group">
@@ -45,6 +46,10 @@
 <div class="gestion-genres list-group">
     <a href="{{ path('movies_back_office_addGenre') }}" class="list-group-item" >Ajouter un genre</a>
     <a class="list-group-item" href="{{path('movies_moviesbundle_listGenre')}}">Liste des genres</a>
+</div>
+
+<div class="gestion-relations list-group">
+    <a href="{{ path('movies_back_office_addRole')}}" class="list-group-item" >Ajouter une relations</a>
 </div>
 
 {%endblock%}
