@@ -11,7 +11,7 @@
             <ul>
             {% for movie in movies %}
                 <li>
-                    <div><img src="{{asset(movie.image)}}" alt="{{movie.titre}}"></div>
+                    <div><a href="{{ path('movies_moviesbundle_showMovie',{'id':movie.id})}}"><img src="{{asset(movie.image)}}" alt="{{movie.titre}}"></a></div>
                 </li>
             {%endfor%}
             </ul>
