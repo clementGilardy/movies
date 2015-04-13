@@ -27,12 +27,17 @@ class MoviesController extends Controller
     public function showMovieAction($id)
     {
         $movie = null;
+        $role = null;
         if($id != null)
         {
-            $repository = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
-            $movie = $repository->find($id);
+            $repositoryMovie = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
+            $repositoryRole =
+            $this->getDoctrine()->getManager()->getRepository('MoviesActorBundle:Role');
+            $movie = $repositoryMovie->find($id);
+            $role = $repositoryRole->findByMovie($movie);
         }
 
-        return $this->render('MoviesMoviesBundle:Movies:showMovie.html.twig',array('movie'=>$movie));
+        return $this->render('MoviesMoviesBundle:Movies:showMovie.html.twig',array('movie'=>$movie,
+        'roles'=>$role));
     }
 }

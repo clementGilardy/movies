@@ -1,0 +1,40 @@
+{% extends "MoviesBackOfficeBundle::layout.html.twig" %}
+{%block title%}{{parent()}} - Liste des films{%endblock%}
+
+{%block corps%}
+
+	{% for msg in app.session.flashbag.get('notice') %}
+		{% if msg is not empty %}
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+				</button>
+				{{ msg }}
+			</div>
+		{% endif %}
+	{% endfor %}
+
+	<h1>Liste des films</h1>
+   <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>Titre</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+            </tr>
+            {% for movie in movies  %}
+                <tr>
+                    <td><a href="{{path('movies_moviesbundle_showMovie',{'id':movie.id})}}">{{movie.titre}}</a></td>
+                    <td><a href="{{path('movies_back_office_deleteMovie',{'id':movie.id})}}">Supprimer</a></td>
+                    <td><a href="{{path('movies_back_office_modifyMovie', {'id':movie.id})}}">Modifier</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{%endblock%}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('bundles/moviesbackoffice/js/multiselect.js') }}"></script>
+    <script src="{{ asset('bundles/moviesbackoffice/js/addRole.js') }}"></script>
+{% endblock %}

@@ -395,14 +395,4 @@ class Movies
     {
         $this->acteurs->removeElement($acteurs);
     }
-
-    /**
-     * Get acteurs
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getActeurs()
-    {
-        return $this->acteurs;
-    }
 }

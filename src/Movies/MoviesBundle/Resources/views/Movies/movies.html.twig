@@ -25,7 +25,13 @@
         <div class="all-movies">
             {% for movie in movies %}
                 <div class="display-movie">
-                    <h3><a href="{{ path('movies_moviesbundle_showMovie', {'id':movie.id})}}">{{movie.titre}}</a></h3>
+                    <h3><a href="{{ path('movies_moviesbundle_showMovie',
+                    {'id':movie.id})}}">{{movie.titre}}</a> 
+                    {%if is_granted('ROLE_ADMIN') %}
+                       <a href="{{path('movies_back_office_modifyMovie',{'id':movie.id})}}"><img height="30px" src="{{asset('images/edit.png')}}" alt=""/></a>
+                       {%endif%}
+                       </h3>
+
                     <img  src="{{ asset(movie.image) }}" alt="{{movie.titre}}">
                 </div>
             {%endfor%}

@@ -16,6 +16,47 @@
 	{% endfor %}
 
 	<h1>Ajouter un role</h1>
+ {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+	<div class="form-group">
+      {# Génération du label. #}
+      	{{ form_label(form.acteur, "Acteur",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      	{{ form_errors(form.acteur) }}
+	 	<div class="col-sm-3">
+      		{{ form_widget(form.acteur,{'attr': {'class': 'selectpicker',
+            'data-live-search':'true','title':'Selectionner l\'acteur'}}) }}
+      	</div>
+    </div>
+    
+    <div class="form-group">
+      {# Génération du label. #}
+      	{{ form_label(form.movie, "Film",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      	{{ form_errors(form.movie) }}
+	 	<div class="col-sm-3">
+      		{{ form_widget(form.movie,{'attr': {'class': 'selectpicker', 'data-live-search':'true','title':'Selectionner le film'}}) }}
+      	</div>
+    </div>
+
+    <div class="form-group">
+      {# Génération du label. #}       
+	  {{ form_label(form.role, "Role",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+	      {# Affichage des erreurs pour ce champ précis. #}
+	      	{{ form_errors(form.role) }}
+		 	<div class="col-sm-2">
+			    {{ form_widget(form.role,{'attr': {'class': 'form-control'}}) }}
+	      	</div>
+    </div>
+
+ <div class="form-group">
+       	<div class="col-sm-3 col-md-offset-2">
+      		{{ form_widget(form.Ajouter, {'attr' : {'class' : 'btn btn-default'}}) }}
+      	</div>
+    </div>
+{{ form_end(form) }}
+
 {%endblock%}
 
 {% block javascripts %}

@@ -21,3 +21,19 @@ movies_back_office_addGenre:
 movies_back_office_addRole:
     path: /admin/ajouter-un-role
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addRole }
+
+movies_back_office_modifyMovie:
+    path:   /admin/modifer-un-film/{id}
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:addMovie }
+    requirements:
+        id: \d.*
+ 
+movies_back_office_listMovies:
+    path: /admin/liste-des-films
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:listMovies }
+
+movies_back_office_deleteMovie:
+    path: /admin/supprimer-un-film/{id}
+    defaults: { _controller: MoviesBackOfficeBundle:Admin:deleteMovie }
+    requirements:
+        id: \d.*

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Movies\MoviesBundle\Form\MovieType;
 use Movies\MoviesBundle\Entity\Movies;
 use Movies\ActorBundle\Entity\Actor;
+use Movies\ActorBundle\Entity\Role;
 use Movies\ActorBundle\Entity\ActorRepository;
 use Movies\MoviesBundle\Entity\Realisateur;
 use Movies\MoviesBundle\Entity\Movies\MoviesBundle\Entity;
@@ -42,9 +43,18 @@ class AdminController extends Controller
 
     }
     
-    public function addMovieAction(Request $request)
+    public function addMovieAction(Request $request, $id = null)
     {
     	$movie = new Movies();
+        $label = "Ajouter un film";   
+        if($id != null)
+        {
+            $repositoryMovie =
+            $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
+            $movie = $repositoryMovie->find($id);
+            $label = "Modifier un film";   
+        }
+
     	$form = $this->get('form.factory')->createBuilder('form',$movie)
     	->add('titre','text')
     	->add('realisateur','entity',array(
@@ -65,7 +75,7 @@ class AdminController extends Controller
     			'attr' => array('placeholder'=>'YYYY-MM-DD')
     	))
     	->add('file','file')
-    	->add('Ajouter','submit',array('label'=>'Ajouter un film'))->getForm();
+    	->add('Ajouter','submit',array('label'=>$label))->getForm();
 
     	$form->handleRequest($request);
     	 
@@ -74,8 +84,18 @@ class AdminController extends Controller
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($movie);
     		$em->flush();
-    		$request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().' à bien été enregistré !');
-    		return $this->redirect($this->generateUrl('movies_back_office_addMovies'));
+            if($id == null)
+            {
+    		    $request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().' à bien été enregistré !');
+    		    return $this->redirect($this->generateUrl('movies_back_office_addMovies'));
+            }
+            else
+            {
+    		    $request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().'
+                à bien été modifié avec succes');
+    		    return
+                $this->redirect($this->generateUrl('movies_moviesbundle_showMovie',array('id'=>$id)));
+            }
     	}
     	
     	
@@ -111,6 +131,69 @@ class AdminController extends Controller
 
     public function addRoleAction(Request $request)
     {
-    	return $this->render('MoviesBackOfficeBundle:Admin:Movie/addRole.html.twig');
+        $role = new Role();
+
+        $form = $this->get('form.factory')->createBuilder('form', $role)
+        ->add('acteur','entity',array(
+    			'class'=>'MoviesActorBundle:Actor',
+    			'property'=>'nomComplet','expanded'=>false,
+    			'multiple'=>false, 'label'=>true
+    	))
+        ->add('movie','entity',array(
+    			'class'=>'MoviesMoviesBundle:Movies',
+    			'property'=>'titre','expanded'=>false,
+    			'multiple'=>false, 'label'=>true
+    	))
+        ->add('role', 'text')
+        ->add('Ajouter', 'submit')->getForm();
+
+        $form->handleRequest($request);
+	
+    	if ($form->isValid()) 
+    	{
+    		$em = $this->getDoctrine()->getManager();
+    		$em->persist($role);
+    		$em->flush();
+    		$request->getSession()->getFlashBag()->add('notice', 'Le role '.$role->getRole().' à
+            bien été enregistré pour lacteur '.$role->getActeur()->getNomComplet().' dans le film
+            '.$role->getMovie()->getTitre() );
+    		return $this->redirect($this->generateUrl('movies_back_office_addRole'));
+    	}
+
+    	return $this->render('MoviesBackOfficeBundle:Admin:Movie/addRole.html.twig',
+        array('form'=>$form->createView()));
     }
+
+    public function listMoviesAction()
+    {
+        $movies=
+        $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies')->findAll();
+        return
+        $this->render('MoviesBackOfficeBundle:Admin:Movie/listMovie.html.twig',array('movies'=>$movies));
+    }
+
+    public function deleteMovieAction(Request $request,$id)
+    {
+        $movie = null;
+        if($id != null)
+        {
+            $movie =
+            $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies')->find($id);
+            $roles =
+            $this->getDoctrine()->getManager()->getRepository('MoviesActorBundle:Role')->findByMovie($movie);
+            
+
+            $em = $this->getDoctrine()->getManager();
+            foreach ($roles as $role) 
+            {
+                $em->remove($role);       
+            }
+            $em->remove($movie);
+            $em->flush();
+             
+    		$request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().' à bien été supprimé !');
+    		return $this->redirect($this->generateUrl('movies_back_office_listMovies'));
+        }
+    }
+
 }
