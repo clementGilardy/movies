@@ -1,6 +1,27 @@
 {% extends "MoviesActorBundle::layout.html.twig" %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{asset('bundles/moviesactor/acteurs.css')}}">
+{% endblock %}
+
+
 
 {% block corps %}
     <h1>{{actor.nomComplet}}</h1>
+
+    <img src="{{asset(actor.image)}}" alt="">
+    {%if actor.biographie is not empty%}
+        <h2>Biographie</h2>
+        <p>{{actor.biographie}}</p>
+    {%endif%}
+    <h2>Filmographie</h2>
+    {%for key,role in roles if key < 6%}
+         <div class="movie">
+             <a href="{{path('movies_moviesbundle_showMovie',
+                {'id':role.movie.id})}}">{{role.movie.titre}}</a><br>
+             <img height="200px" src="{{asset(role.movie.image)}}" alt=""/>
+          </div>
+     {%endfor%}
+
 {% endblock %}
 

@@ -252,11 +252,6 @@ class Movies
    		return $this->votes;
    }
    
-   public function removeVote(Vote $vote)
-   {
-   		$this->votes->removeElement($vote);	
-   }
-   
    public function addCommentaire(Commentaire $commentaire)
    {
 	   	if(!$this->commentaires->contains($commentaire))

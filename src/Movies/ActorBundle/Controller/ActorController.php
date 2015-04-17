@@ -18,12 +18,16 @@ class ActorController extends Controller
     public function showActorAction($id)
     {
         $actor = null;
+        $role = null;
         if($id != null)
         {
-
-            $repository = $this->getDoctrine()->getManager()->getRepository('MoviesActorBundle:Actor');
-            $actor = $repository->find($id);
+            $repositoryActor = $this->getDoctrine()->getManager()->getRepository('MoviesActorBundle:Actor');
+            $repositoryRole  =
+            $this->getDoctrine()->getManager()->getRepository('MoviesActorBundle:Role');
+            $actor = $repositoryActor->find($id);
+            $role = $repositoryRole->findByActeur($actor);
         }
-        return $this->render('MoviesActorBundle:Actor:showActor.html.twig',array('actor'=>$actor));
+        return $this->render('MoviesActorBundle:Actor:showActor.html.twig',array('actor'=>$actor,
+        'roles'=>$role));
     }
 }

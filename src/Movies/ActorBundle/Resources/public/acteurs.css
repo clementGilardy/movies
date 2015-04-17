@@ -1,0 +1,12 @@
+.movie
+{
+    display:inline-block;
+    text-align:center;
+    width: 150px;
+}
+
+.movie a
+{
+    font-size: 20px;
+}
+
