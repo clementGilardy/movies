@@ -1,4 +1,9 @@
 {% extends "::layout.html.twig" %}
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{asset('bundles/moviesmovies/css/films.css')}}">
+{% endblock %}
+
 {% block carousel %}
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
@@ -13,21 +18,12 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill" style="background-image:url('{{ asset('images/cha.jpg') }}')"></div>
-                <div class="carousel-caption">
-                    <h2>Voir le trailer</h2>
-                </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('{{ asset('images/2.jpg') }}');"></div>
-                <div class="carousel-caption">
-                    <h2>Voir le trailer</h2>
-                </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('{{ asset('images/3.jpg') }}');"></div>
-                <div class="carousel-caption">
-                    <h2>Voir le trailer</h2>
-                </div>
             </div>
         </div>
 
@@ -53,44 +49,25 @@
 		{% endif %}
 	{% endfor %}
 
- 		<div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    À l'affiche
-                </h1>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Nouveauté cinéma</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">en savoir plus</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i>Nouveauté série</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">en savoir plus</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i>Acteurs</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">en savoir plus</a>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Les derniers films ajouté
+            </h1>
         </div>
+
+        <div class="all-movies">
+            {% for key,movie in movies if key < 5%}
+                <div class="display-movie">
+                    <p><a href="{{ path('movies_moviesbundle_showMovie',
+                    {'id':movie.id})}}">{{movie.titre}}</a> 
+                    {%if is_granted('ROLE_ADMIN') %}
+                       <a href="{{path('movies_back_office_modifyMovie',{'id':movie.id})}}"><img height="30px" src="{{asset('images/edit.png')}}" alt=""/></a>
+                       {%endif%}
+                       </p>
+                    <img  src="{{ asset(movie.image) }}" alt="{{movie.titre}}">
+                </div>
+            {%endfor%}
+        </div>
+    </div>
 {% endblock %}

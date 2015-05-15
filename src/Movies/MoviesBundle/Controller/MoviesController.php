@@ -9,12 +9,20 @@ use Movies\MoviesBundle\Entity\Movies;
 
 class MoviesController extends Controller
 {
-    public function moviesAction(Request $request)
+    public function moviesAction(Request $request,$lettre)
     {	
         $repo = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
-        $listMovies = $repo->findAll();
+        $listMovies = $repo->findByLetter($lettre);
         return $this->render('MoviesMoviesBundle:Movies:movies.html.twig',
                 array('movies'=>$listMovies)); 
+    }
+
+    public function moviesAllAction(Request $request)
+    {
+        $repo = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
+        $listMovies = $repo->findAll();
+        return
+        $this->render('MoviesMoviesBundle:Movies:movies.html.twig',array('movies'=>$listMovies));
     }
 
     public function listGenreAction(Request $request)

@@ -22,6 +22,12 @@
 {% block corps %}
     <div class="row">
         <h1>Les films</h1>
+        <div class="col-md-offset-3">
+            <a href="{{path('movies_moviesbundle_moviesAll')}}">ALL</a> |
+            {% for key,letter in 'a'|upper..'z'|upper %}
+                <a href="{{path('movies_moviesbundle_movies',{'lettre':letter})}}">{{letter}}</a>{% if key < 25 %} | {%endif%} 
+            {%endfor%}
+        </div>
         <div class="all-movies">
             {% for movie in movies %}
                 <div class="display-movie">

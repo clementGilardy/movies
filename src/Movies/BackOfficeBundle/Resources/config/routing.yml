@@ -23,7 +23,7 @@ movies_back_office_addRole:
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addRole }
 
 movies_back_office_modifyMovie:
-    path:   /admin/modifer-un-film/{id}
+    path:   /admin/modifier-un-film/{id}
     defaults: { _controller: MoviesBackOfficeBundle:Admin:addMovie }
     requirements:
         id: \d.*

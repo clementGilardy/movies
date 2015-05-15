@@ -1,6 +1,12 @@
 movies_moviesbundle_movies:
-    path:   /movies
+    path:   /movies/{lettre}
     defaults: { _controller: MoviesMoviesBundle:Movies:movies }
+    requirements:
+        lettre: ^[A-Z]
+
+movies_moviesbundle_moviesAll:
+    path: /movies
+    defaults: { _controller: MoviesMoviesBundle:Movies:moviesAll }
 
 movies_moviesbundle_listGenre:
     path: /list-genre

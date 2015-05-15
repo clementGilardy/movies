@@ -43,18 +43,21 @@ class AdminController extends Controller
 
     }
     
-    public function addMovieAction(Request $request, $id = null)
+    public function addMovieAction(Request $request,$id = null)
     {
     	$movie = new Movies();
         $label = "Ajouter un film";   
+        
         if($id != null)
         {
-            $repositoryMovie =
-            $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
-            $movie = $repositoryMovie->find($id);
-            $label = "Modifier un film";   
+            $id = (int)trim($id);
+            if(is_numeric($id))
+            {
+                $repositoryMovie = $this->getDoctrine()->getManager()->getRepository('MoviesMoviesBundle:Movies');
+                $movie = $repositoryMovie->find($id);
+                $label = "Modifier un film";   
+            }
         }
-
     	$form = $this->get('form.factory')->createBuilder('form',$movie)
     	->add('titre','text')
     	->add('realisateur','entity',array(
@@ -62,7 +65,7 @@ class AdminController extends Controller
     			'property'=>'nomComplet','expanded'=>false,
     			'multiple'=>false, 'label'=>true
     	))
-    	->add('duration','integer')
+    	->add('duration','text')
        	->add('genres','entity',array(
     			'class'=>'MoviesMoviesBundle:Genre',
     			'property'=>'nom','expanded'=>false,
@@ -91,14 +94,10 @@ class AdminController extends Controller
             }
             else
             {
-    		    $request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().'
-                à bien été modifié avec succes');
-    		    return
-                $this->redirect($this->generateUrl('movies_moviesbundle_showMovie',array('id'=>$id)));
+    		    $request->getSession()->getFlashBag()->add('notice', 'Le film '.$movie->getTitre().' à bien été modifié avec succes');
+    		    return $this->redirect($this->generateUrl('movies_moviesbundle_showMovie',array('id'=>$id)));
             }
     	}
-    	
-    	
     	return $this->render('MoviesBackOfficeBundle:Admin:Movie/addMovie.html.twig',array('form'=>$form->createView()));
     }
     
@@ -195,5 +194,11 @@ class AdminController extends Controller
     		return $this->redirect($this->generateUrl('movies_back_office_listMovies'));
         }
     }
+    public function get_numeric($val) {
+      if (is_numeric($val)) {
+          return $val + 0;
+            }
+              return 0;
+              } 
 
 }

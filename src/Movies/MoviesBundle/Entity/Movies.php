@@ -64,8 +64,8 @@ class Movies
     
     /**
      * 
-     * @var integer
-     * @ORM\Column(name="duration", type="integer")
+     * @var String
+     * @ORM\Column(name="duration", type="string", length=255)
      */
     private $duration;
     

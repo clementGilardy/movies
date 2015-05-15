@@ -12,15 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class MoviesRepository extends EntityRepository
 {
-	public function getMoviesWithActeurs(array $acteurs)
-	{
-		$qb = $this->createQueryBuilder('movies');
-		
-		$qb->join('movies.acteur','a')
-		->addSelect('a');
-		
-		$qb->where($qb->expr()->in('a.nom', $acteurs));
+    public function findByLetter($letter)
+    {
+       $qb = $this->createQueryBuilder('m');
+       $qb->where('m.titre like :titre')->setParameter('titre',$letter.'%');
 
-		return $qb->getQuery()->getResult();
-	}
+       return $qb->getQuery()->getResult();
+    }
 }
+
